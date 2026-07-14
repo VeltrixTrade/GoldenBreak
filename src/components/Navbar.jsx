@@ -1,14 +1,28 @@
-import React from 'react';
-import { ShoppingBag, ShieldCheck, Gamepad2, Coffee, Sparkles, UtensilsCrossed } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingBag, Gamepad2, Sparkles, UtensilsCrossed } from 'lucide-react';
 
 export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, setActiveTab }) {
+  const [logoClicks, setLogoClicks] = useState(0);
+
+  // Secret Admin Trigger: Triple click on the logo
+  const handleLogoClick = () => {
+    setActiveTab('home');
+    const nextCount = logoClicks + 1;
+    setLogoClicks(nextCount);
+    if (nextCount >= 3) {
+      onOpenAdmin();
+      setLogoClicks(0);
+    }
+    setTimeout(() => setLogoClicks(0), 1500);
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        {/* Logo & Brand */}
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('home')}>
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+        {/* Logo & Brand (Secret Triple-Click to open Admin) */}
+        <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
             <Gamepad2 className="w-7 h-7 text-black stroke-[2.5]" />
           </div>
           <div>
@@ -36,7 +50,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           >
             <div className="flex items-center gap-2">
               <UtensilsCrossed className="w-4 h-4" />
-              <span>قائمة الطعام</span>
+              <span>قائمة الطعام • Menu</span>
             </div>
           </button>
 
@@ -69,18 +83,8 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           </button>
         </nav>
 
-        {/* Actions */}
+        {/* Actions (Only Cart Button, Admin buttons completely removed) */}
         <div className="flex items-center gap-3">
-          {/* Admin Panel Button */}
-          <button
-            onClick={onOpenAdmin}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-dark-700 hover:bg-amber-500/10 hover:border-amber-500/40 border border-white/10 text-slate-200 text-sm font-medium transition-all group"
-            title="فتح لوحة التحكم بالإدارة"
-          >
-            <ShieldCheck className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-            <span className="hidden sm:inline">لوحة الأدمن</span>
-          </button>
-
           {/* Cart Button */}
           <button
             onClick={onOpenCart}
@@ -95,6 +99,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
             )}
           </button>
         </div>
+
       </div>
     </header>
   );

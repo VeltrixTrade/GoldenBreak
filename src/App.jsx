@@ -8,10 +8,10 @@ import BilliardsBookingModal from './components/BilliardsBookingModal';
 import AdminModal from './components/AdminModal';
 import VenueShowcase from './components/VenueShowcase';
 import { DEFAULT_CATEGORIES, DEFAULT_ITEMS } from './data/initialData';
-import { Gamepad2, Phone, MapPin, Clock, Heart, ShieldCheck, ShoppingBag, UtensilsCrossed } from 'lucide-react';
+import { Gamepad2, Phone, MapPin, Clock, Heart, UtensilsCrossed } from 'lucide-react';
 
 export default function App() {
-  // Load initial state from LocalStorage or fall back to defaults (v3 bilingual & no food images)
+  // Load initial state from LocalStorage or fall back to defaults
   const [categories, setCategories] = useState(() => {
     const saved = localStorage.getItem('gb_categories_v3');
     return saved ? JSON.parse(saved) : DEFAULT_CATEGORIES;
@@ -31,6 +31,25 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  // Secret Admin Access via Keyboard Shortcut (Ctrl + Shift + A) or URL Hash (#admin)
+  useEffect(() => {
+    // Check URL Hash on initial load
+    if (window.location.hash === '#admin') {
+      setIsAdminOpen(true);
+    }
+
+    const handleKeyDown = (e) => {
+      // Ctrl + Shift + A or Cmd + Shift + A
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        setIsAdminOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Save to LocalStorage whenever categories or items change
   useEffect(() => {
@@ -162,7 +181,7 @@ export default function App() {
                   <UtensilsCrossed className="w-16 h-16 text-slate-600 mx-auto stroke-1" />
                   <h3 className="text-xl font-bold text-slate-300">لم يتم العثور على نتائج • No items found</h3>
                   <p className="text-xs text-slate-500 max-w-md mx-auto">
-                    جرب البحث باسم آخر بالعربي أو الإنجليزي. يمكنك إضافة عناصر جديدة من لوحة الأدمن!
+                    جرب البحث باسم آخر بالعربي أو الإنجليزي.
                   </p>
                   <button
                     onClick={() => {
@@ -221,17 +240,6 @@ export default function App() {
 
       </main>
 
-      {/* Floating Admin Quick Action Button */}
-      <div className="fixed bottom-6 right-6 z-30">
-        <button
-          onClick={() => setIsAdminOpen(true)}
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold text-xs shadow-2xl shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all border border-amber-300"
-        >
-          <ShieldCheck className="w-4 h-4" />
-          <span>إضافة عنصر / قسم (الأدمن)</span>
-        </button>
-      </div>
-
       {/* Slide-over & Modals */}
       <CartDrawer
         isOpen={isCartOpen}
@@ -261,7 +269,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="bg-dark-900 border-t border-white/10 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-slate-400 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-400 text-sm">
           
           {/* Brand */}
           <div className="space-y-3">
@@ -271,7 +279,7 @@ export default function App() {
               </div>
               <span className="text-2xl font-black gold-text-gradient font-mono">GOLDENBREAK</span>
             </div>
-            <p className="text-xs leading-relaxed">
+            <p className="text-xs leading-relaxed max-w-sm">
               مطعم وصالة بلياردو وسنوكر فاخرة. نضمن لك تجربة ترفيهية وطعام طازج بأعلى المستويات.
             </p>
           </div>
@@ -291,21 +299,6 @@ export default function App() {
               <MapPin className="w-4 h-4 text-amber-400" />
               <span>الموقع: الشارع الرئيسي، صالة جولدن بريك VIP</span>
             </div>
-          </div>
-
-          {/* Admin Fast Access */}
-          <div className="space-y-3">
-            <h4 className="text-white font-bold text-base">إدارة المطعم • Admin</h4>
-            <p className="text-xs leading-relaxed">
-              يمكن لمدير المطعم إضافة أقسام جديدة، وجبات ومشروبات، وتعديل الأسعار بالعربي والإنجليزي.
-            </p>
-            <button
-              onClick={() => setIsAdminOpen(true)}
-              className="px-4 py-2 rounded-xl bg-dark-800 hover:bg-amber-500 hover:text-black text-amber-400 border border-amber-500/30 text-xs font-bold transition-all flex items-center gap-2"
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span>لوحة الإدارة • Admin Panel</span>
-            </button>
           </div>
 
         </div>
