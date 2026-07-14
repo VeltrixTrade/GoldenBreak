@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Gamepad2, Calendar, Clock, User, CheckCircle2, X } from 'lucide-react';
+import { Gamepad2, User, CheckCircle2, X, MessageCircle } from 'lucide-react';
 
 export default function BilliardsBookingModal({ isOpen, onClose }) {
   const [tableType, setTableType] = useState('billiards');
@@ -12,9 +12,26 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  // WhatsApp Booking Link for 07502203691 (+9647502203691)
+  const getWhatsAppBookingUrl = () => {
+    const message =
+      `السلام عليكم، طلب حجز طاولة جديد في صالة GOLDENBREAK (@goldenbreak.dhk):\n\n` +
+      `👤 الاسم: ${name}\n` +
+      `📞 رقم الهاتف: ${phone}\n` +
+      `🎱 نوع الطاولة: ${tableType === 'billiards' ? 'طاولة بلياردو VIP' : 'طاولة سنوكر VIP'}\n` +
+      `📅 التاريخ: ${date}\n` +
+      `⏰ وقت الحضور: ${time}\n` +
+      `⏳ عدد الساعات: ${duration} ساعة`;
+
+    return `https://wa.me/9647502203691?text=${encodeURIComponent(message)}`;
+  };
+
   const handleBooking = (e) => {
     e.preventDefault();
+    if (!name || !phone || !date || !time) return;
     setSubmitted(true);
+    // Automatically open WhatsApp with booking details
+    window.open(getWhatsAppBookingUrl(), '_blank');
   };
 
   const resetAndClose = () => {
@@ -44,18 +61,30 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
             <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto animate-bounce">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-2xl font-black text-white">تم حجز الطاولة بنجاح!</h3>
+            <h3 className="text-2xl font-black text-white">تم تجهيز تفاصيل حجزك في الواتساب!</h3>
             <p className="text-sm text-slate-300">
-              أهلاً بك عزيزي <span className="text-amber-400 font-bold">{name}</span>، تمت إضافة حجزك لطاولة ({tableType === 'billiards' ? 'بلياردو VIP' : 'سنوكر فاخرة'}) بتاريخ {date} الساعة {time}.
+              عزيزي <span className="text-amber-400 font-bold">{name}</span>، تم توجيه حجزك لطاولة ({tableType === 'billiards' ? 'بلياردو VIP' : 'سنوكر فاخرة'}) إلى إدارة الصالة عبر الواتساب على الرقم <span className="text-emerald-400 font-bold font-mono">07502203691</span>.
             </p>
+
+            <a
+              href={getWhatsAppBookingUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-500 text-black font-extrabold text-sm hover:brightness-110 transition-all shadow-lg shadow-emerald-500/20"
+            >
+              <MessageCircle className="w-4 h-4 fill-black" />
+              <span>إرسال الحجز عبر الواتساب مباشرة</span>
+            </a>
+
             <div className="p-4 bg-dark-700/60 rounded-xl text-xs text-amber-300 border border-amber-500/20">
               يرجى التواجد قبل موعد الحجز بـ 10 دقائق لضمان تجهيز الطاولة والمشروبات.
             </div>
+
             <button
               onClick={resetAndClose}
-              className="w-full py-3.5 rounded-xl bg-amber-500 text-black font-extrabold text-sm hover:brightness-110 transition-all mt-4"
+              className="w-full py-3.5 rounded-xl bg-dark-700 text-slate-200 font-bold text-xs hover:bg-slate-700 transition-all"
             >
-              موافق
+              موافق • Close
             </button>
           </div>
         ) : (
@@ -66,7 +95,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h3 className="text-xl font-black">حجز طاولة لعب VIP</h3>
-                <p className="text-xs text-slate-400">اختر نوع الطاولة والوقت المناسب لك</p>
+                <p className="text-xs text-slate-400">سيتم إرسال الحجز مباشرة للإدارة عبر الواتساب (07502203691)</p>
               </div>
             </div>
 
@@ -118,10 +147,10 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
                 <input
                   type="tel"
                   required
-                  placeholder="07xxxxxxxx"
+                  placeholder="07502203691"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none"
+                  className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none font-mono"
                 />
               </div>
 
@@ -133,7 +162,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none"
+                    className="w-full px-3 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none font-mono"
                   />
                 </div>
 
@@ -144,7 +173,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
                     required
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none"
+                    className="w-full px-3 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none font-mono"
                   />
                 </div>
               </div>
@@ -156,9 +185,9 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
                   onChange={(e) => setDuration(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none"
                 >
-                  <option value="1">ساعة واحدة (50 د.ع / $)</option>
-                  <option value="2">ساعتان (100 د.ع / $)</option>
-                  <option value="3">3 ساعات (140 د.ع / $)</option>
+                  <option value="1">ساعة واحدة (50,000 د.ع)</option>
+                  <option value="2">ساعتان (100,000 د.ع)</option>
+                  <option value="3">3 ساعات (140,000 د.ع)</option>
                   <option value="4">أكثر من 3 ساعات (حساب VIP)</option>
                 </select>
               </div>
@@ -166,9 +195,10 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-black font-extrabold text-base shadow-xl shadow-amber-500/25 hover:brightness-110 active:scale-95 transition-all mt-4"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 text-black font-extrabold text-base shadow-xl shadow-emerald-500/25 hover:brightness-110 active:scale-95 transition-all mt-4 flex items-center justify-center gap-2"
             >
-              تأكيد حجز الطاولة
+              <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
+              <span>إرسال الحجز عبر الواتساب (07502203691)</span>
             </button>
           </form>
         )}

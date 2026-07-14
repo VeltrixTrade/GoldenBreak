@@ -8,7 +8,7 @@ import BilliardsBookingModal from './components/BilliardsBookingModal';
 import AdminModal from './components/AdminModal';
 import VenueShowcase from './components/VenueShowcase';
 import { DEFAULT_CATEGORIES, DEFAULT_ITEMS } from './data/initialData';
-import { Gamepad2, Phone, MapPin, Clock, Heart, UtensilsCrossed } from 'lucide-react';
+import { Gamepad2, Phone, MapPin, Clock, Heart, UtensilsCrossed, Instagram, MessageCircle } from 'lucide-react';
 
 export default function App() {
   // Load initial state from LocalStorage or fall back to defaults
@@ -269,7 +269,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="bg-dark-900 border-t border-white/10 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-400 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-slate-400 text-sm">
           
           {/* Brand */}
           <div className="space-y-3">
@@ -282,6 +282,17 @@ export default function App() {
             <p className="text-xs leading-relaxed max-w-sm">
               مطعم وصالة بلياردو وسنوكر فاخرة. نضمن لك تجربة ترفيهية وطعام طازج بأعلى المستويات.
             </p>
+            <div className="pt-1">
+              <a
+                href="https://instagram.com/goldenbreak.dhk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-amber-400 font-bold hover:underline"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>@goldenbreak.dhk</span>
+              </a>
+            </div>
           </div>
 
           {/* Contact & Hours */}
@@ -291,9 +302,9 @@ export default function App() {
               <Clock className="w-4 h-4 text-amber-400" />
               <span>مفتوح يومياً: من 10:00 صباحاً حتى 02:00 ليلاً</span>
             </div>
-            <div className="flex items-center gap-2 text-xs">
+            <div className="flex items-center gap-2 text-xs font-mono">
               <Phone className="w-4 h-4 text-amber-400" />
-              <span>للحجز والاستفسار: 07800000000</span>
+              <span>واتساب والحجوزات: 07502203691</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <MapPin className="w-4 h-4 text-amber-400" />
@@ -301,10 +312,27 @@ export default function App() {
             </div>
           </div>
 
+          {/* Direct WhatsApp Action */}
+          <div className="space-y-3">
+            <h4 className="text-white font-bold text-base">الحجز والطلب المباشر • WhatsApp</h4>
+            <p className="text-xs leading-relaxed">
+              تصلك الحجوزات والطلبات مباشرة عبر الواتساب على الرقم المعتمد.
+            </p>
+            <a
+              href="https://wa.me/9647502203691"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20"
+            >
+              <MessageCircle className="w-4 h-4 fill-black" />
+              <span>تواصل عبر الواتساب (07502203691)</span>
+            </a>
+          </div>
+
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
-          <p>© 2026 GOLDENBREAK Lounge & Restaurant. All rights reserved.</p>
+          <p>© 2026 GOLDENBREAK Lounge & Restaurant (@goldenbreak.dhk). All rights reserved.</p>
           <div className="flex items-center gap-1">
             <span>صنع بـ</span>
             <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />

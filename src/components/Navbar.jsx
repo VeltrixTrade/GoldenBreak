@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Gamepad2, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { ShoppingBag, Gamepad2, Sparkles, UtensilsCrossed, Instagram } from 'lucide-react';
 
 export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, setActiveTab }) {
   const [logoClicks, setLogoClicks] = useState(0);
@@ -21,7 +21,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo & Brand (Secret Triple-Click to open Admin) */}
-        <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK">
+        <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK @goldenbreak.dhk">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
             <Gamepad2 className="w-7 h-7 text-black stroke-[2.5]" />
           </div>
@@ -30,9 +30,16 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
               <span className="font-extrabold text-2xl tracking-wider gold-text-gradient font-mono">
                 GOLDENBREAK
               </span>
-              <span className="bg-amber-500/10 text-amber-400 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/20 font-semibold">
-                LOUNGE & RESTAURANT
-              </span>
+              <a
+                href="https://instagram.com/goldenbreak.dhk"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/20 font-bold flex items-center gap-1 transition-all"
+              >
+                <Instagram className="w-3 h-3" />
+                <span>goldenbreak.dhk</span>
+              </a>
             </div>
             <p className="text-xs text-slate-400 font-medium">صالة ومطعم بلياردو & كافيه فاخر</p>
           </div>
@@ -83,7 +90,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           </button>
         </nav>
 
-        {/* Actions (Only Cart Button, Admin buttons completely removed) */}
+        {/* Actions */}
         <div className="flex items-center gap-3">
           {/* Cart Button */}
           <button

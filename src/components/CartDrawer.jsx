@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, Send, CheckCircle2 } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, Send, CheckCircle2, MessageCircle } from 'lucide-react';
 
 export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const [tableNumber, setTableNumber] = useState('');
@@ -10,10 +10,28 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+  // Generate WhatsApp Order Link for 07502203691 (+9647502203691)
+  const getWhatsAppUrl = () => {
+    const itemsListText = cartItems
+      .map(item => `• ${item.nameAr || item.name} (${item.nameEn || ''}) x${item.quantity} - ${(item.price * item.quantity).toLocaleString()} د.ع`)
+      .join('\n');
+
+    const fullMessage =
+      `السلام عليكم، طلب جديد من صالة GOLDENBREAK (@goldenbreak.dhk):\n\n` +
+      `📦 الوجبات والمشروبات:\n${itemsListText}\n\n` +
+      `💰 المجموع الكلي: ${totalPrice.toLocaleString()} د.ع\n` +
+      (tableNumber ? `📍 رقم الطاولة / VIP: ${tableNumber}\n` : '') +
+      (notes ? `📝 ملاحظات: ${notes}` : '');
+
+    return `https://wa.me/9647502203691?text=${encodeURIComponent(fullMessage)}`;
+  };
+
   const handleSubmitOrder = (e) => {
     e.preventDefault();
     if (cartItems.length === 0) return;
     setOrderSubmitted(true);
+    // Automatically open WhatsApp with full order details
+    window.open(getWhatsAppUrl(), '_blank');
   };
 
   const resetAndClose = () => {
@@ -43,7 +61,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
               </div>
               <div>
                 <h3 className="text-xl font-black">سلة الطلبات • Cart</h3>
-                <p className="text-xs text-slate-400">{cartItems.length} عنصر في السلة</p>
+                <p className="text-xs text-slate-400">{cartItems.length} عنصر • @goldenbreak.dhk</p>
               </div>
             </div>
 
@@ -58,20 +76,32 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
           {/* Body */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {orderSubmitted ? (
-              <div className="text-center py-12 space-y-4">
+              <div className="text-center py-10 space-y-4">
                 <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto animate-pulse">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h4 className="text-2xl font-black text-white">تم إرسال طلبك بنجاح!</h4>
+                <h4 className="text-2xl font-black text-white">تم تجهيز طلبك في الواتساب!</h4>
                 <p className="text-sm text-slate-300">
-                  سيتم تجهيز طلبك فوراً وإيصاله إلى {tableNumber ? `الطاولة رقم (${tableNumber})` : 'طاولتك في الصالة'}.
+                  تم توجيه تفاصيل طلبك مباشرة إلى الإدارة عبر الواتساب على الرقم <span className="text-emerald-400 font-bold font-mono">07502203691</span>.
                 </p>
+
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-500 text-black font-extrabold text-sm hover:brightness-110 transition-all shadow-lg shadow-emerald-500/20"
+                >
+                  <MessageCircle className="w-4 h-4 fill-black" />
+                  <span>فتح تطبيق الواتساب مجدداً</span>
+                </a>
+
                 <div className="p-4 bg-dark-700/60 rounded-xl text-xs text-amber-400 font-medium border border-amber-500/20">
-                  شكراً لزيارتك صالة GOLDENBREAK! نتمنى لك وقتاً ممتعاً.
+                  شكراً لزيارتك صالة GOLDENBREAK (@goldenbreak.dhk)! نتمنى لك وقتاً ممتعاً.
                 </div>
+
                 <button
                   onClick={resetAndClose}
-                  className="w-full py-3 rounded-xl bg-amber-500 text-black font-extrabold text-sm hover:brightness-110 transition-all mt-4"
+                  className="w-full py-3 rounded-xl bg-dark-700 text-slate-200 font-bold text-xs hover:bg-slate-700 transition-all"
                 >
                   العودة للقائمة الرئيسية
                 </button>
@@ -166,13 +196,13 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 </span>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit to WhatsApp Button */}
               <button
                 onClick={handleSubmitOrder}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-black font-extrabold text-base shadow-xl shadow-amber-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 text-black font-extrabold text-base shadow-xl shadow-emerald-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                <Send className="w-5 h-5 stroke-[2.5]" />
-                <span>إرسال الطلب للمطبخ • Submit Order</span>
+                <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
+                <span>إرسال الطلب عبر الواتساب (07502203691)</span>
               </button>
             </div>
           )}
