@@ -10,7 +10,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  // Generate WhatsApp Order Link for 07502203691 (+9647502203691)
+  // Primary WhatsApp number for orders: 07504596543 (+9647504596543)
   const getWhatsAppUrl = () => {
     const itemsListText = cartItems
       .map(item => `• ${item.nameAr || item.name} (${item.nameEn || ''}) x${item.quantity} - ${(item.price * item.quantity).toLocaleString()} د.ع`)
@@ -23,14 +23,14 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
       (tableNumber ? `📍 رقم الطاولة / VIP: ${tableNumber}\n` : '') +
       (notes ? `📝 ملاحظات: ${notes}` : '');
 
-    return `https://wa.me/9647502203691?text=${encodeURIComponent(fullMessage)}`;
+    return `https://wa.me/9647504596543?text=${encodeURIComponent(fullMessage)}`;
   };
 
   const handleSubmitOrder = (e) => {
     e.preventDefault();
     if (cartItems.length === 0) return;
     setOrderSubmitted(true);
-    // Automatically open WhatsApp with full order details
+    // Automatically open WhatsApp with order details
     window.open(getWhatsAppUrl(), '_blank');
   };
 
@@ -82,8 +82,12 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 </div>
                 <h4 className="text-2xl font-black text-white">تم تجهيز طلبك في الواتساب!</h4>
                 <p className="text-sm text-slate-300">
-                  تم توجيه تفاصيل طلبك مباشرة إلى الإدارة عبر الواتساب على الرقم <span className="text-emerald-400 font-bold font-mono">07502203691</span>.
+                  تم توجيه تفاصيل طلبك مباشرة للإدارة عبر الواتساب على الأرقام:
                 </p>
+                <div className="flex flex-col gap-1 text-emerald-400 font-bold font-mono text-sm">
+                  <span>0750 459 6543</span>
+                  <span>0751 531 5442</span>
+                </div>
 
                 <a
                   href={getWhatsAppUrl()}
@@ -202,7 +206,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 text-black font-extrabold text-base shadow-xl shadow-emerald-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
-                <span>إرسال الطلب عبر الواتساب (07502203691)</span>
+                <span>إرسال الطلب عبر الواتساب</span>
               </button>
             </div>
           )}

@@ -12,7 +12,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  // WhatsApp Booking Link for 07502203691 (+9647502203691)
+  // Primary WhatsApp Booking Link: 07504596543 (+9647504596543)
   const getWhatsAppBookingUrl = () => {
     const message =
       `السلام عليكم، طلب حجز طاولة جديد في صالة GOLDENBREAK (@goldenbreak.dhk):\n\n` +
@@ -23,7 +23,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
       `⏰ وقت الحضور: ${time}\n` +
       `⏳ عدد الساعات: ${duration} ساعة`;
 
-    return `https://wa.me/9647502203691?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/9647504596543?text=${encodeURIComponent(message)}`;
   };
 
   const handleBooking = (e) => {
@@ -58,13 +58,17 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
 
         {submitted ? (
           <div className="text-center py-8 space-y-4">
-            <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto animate-bounce">
+            <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto animate-pulse">
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-2xl font-black text-white">تم تجهيز تفاصيل حجزك في الواتساب!</h3>
             <p className="text-sm text-slate-300">
-              عزيزي <span className="text-amber-400 font-bold">{name}</span>، تم توجيه حجزك لطاولة ({tableType === 'billiards' ? 'بلياردو VIP' : 'سنوكر فاخرة'}) إلى إدارة الصالة عبر الواتساب على الرقم <span className="text-emerald-400 font-bold font-mono">07502203691</span>.
+              عزيزي <span className="text-amber-400 font-bold">{name}</span>، تم توجيه حجزك لطاولة ({tableType === 'billiards' ? 'بلياردو VIP' : 'سنوكر فاخرة'}) إلى إدارة الصالة عبر الواتساب على الأرقام:
             </p>
+            <div className="flex flex-col gap-1 text-emerald-400 font-bold font-mono text-sm">
+              <span>0750 459 6543</span>
+              <span>0751 531 5442</span>
+            </div>
 
             <a
               href={getWhatsAppBookingUrl()}
@@ -95,7 +99,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h3 className="text-xl font-black">حجز طاولة لعب VIP</h3>
-                <p className="text-xs text-slate-400">سيتم إرسال الحجز مباشرة للإدارة عبر الواتساب (07502203691)</p>
+                <p className="text-xs text-slate-400">سيتم إرسال الحجز للإدارة عبر الواتساب (07504596543 / 07515315442)</p>
               </div>
             </div>
 
@@ -147,7 +151,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
                 <input
                   type="tel"
                   required
-                  placeholder="07502203691"
+                  placeholder="07504596543"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none font-mono"
@@ -198,7 +202,7 @@ export default function BilliardsBookingModal({ isOpen, onClose }) {
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600 text-black font-extrabold text-base shadow-xl shadow-emerald-500/25 hover:brightness-110 active:scale-95 transition-all mt-4 flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
-              <span>إرسال الحجز عبر الواتساب (07502203691)</span>
+              <span>إرسال الحجز عبر الواتساب</span>
             </button>
           </form>
         )}

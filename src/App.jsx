@@ -296,7 +296,7 @@ export default function App() {
           </div>
 
           {/* Contact & Hours */}
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             <h4 className="text-white font-bold text-base mb-3">أوقات العمل والمعلومات • Info</h4>
             <div className="flex items-center gap-2 text-xs">
               <Clock className="w-4 h-4 text-amber-400" />
@@ -304,7 +304,11 @@ export default function App() {
             </div>
             <div className="flex items-center gap-2 text-xs font-mono">
               <Phone className="w-4 h-4 text-amber-400" />
-              <span>واتساب والحجوزات: 07502203691</span>
+              <span>الخط الرئيسي: 0750 459 6543</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <Phone className="w-4 h-4 text-amber-400" />
+              <span>الخط الثاني: 0751 531 5442</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <MapPin className="w-4 h-4 text-amber-400" />
@@ -312,21 +316,39 @@ export default function App() {
             </div>
           </div>
 
-          {/* Direct WhatsApp Action */}
+          {/* Direct WhatsApp Action Buttons */}
           <div className="space-y-3">
             <h4 className="text-white font-bold text-base">الحجز والطلب المباشر • WhatsApp</h4>
             <p className="text-xs leading-relaxed">
-              تصلك الحجوزات والطلبات مباشرة عبر الواتساب على الرقم المعتمد.
+              تواصل معنا مباشرة عبر أرقام الواتساب المعتمدة للإدارة:
             </p>
-            <a
-              href="https://wa.me/9647502203691"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20"
-            >
-              <MessageCircle className="w-4 h-4 fill-black" />
-              <span>تواصل عبر الواتساب (07502203691)</span>
-            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                href="https://wa.me/9647504596543"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20"
+              >
+                <div className="flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 fill-black" />
+                  <span>خط الواتساب 1</span>
+                </div>
+                <span className="font-mono">0750 459 6543</span>
+              </a>
+
+              <a
+                href="https://wa.me/9647515315442"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-dark-700 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 font-extrabold text-xs transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4" />
+                  <span>خط الواتساب 2</span>
+                </div>
+                <span className="font-mono">0751 531 5442</span>
+              </a>
+            </div>
           </div>
 
         </div>
