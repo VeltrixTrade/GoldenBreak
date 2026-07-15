@@ -21,15 +21,15 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo & Brand (Secret Triple-Click to open Admin) */}
-        <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK @goldenbreak.dhk">
+        <div className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK @goldenbreak.dhk">
           <img 
             src="/logo.png" 
             alt="GOLDENBREAK Logo" 
-            className="w-12 h-12 rounded-full object-cover border border-amber-500/30 group-hover:scale-105 transition-transform duration-300 bg-black shadow-lg shadow-amber-500/10"
+            className="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover border border-amber-500/30 group-hover:scale-105 transition-transform duration-300 bg-black shadow-lg shadow-amber-500/10"
           />
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-2xl tracking-wider gold-text-gradient font-mono">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="font-extrabold text-base sm:text-2xl tracking-wider gold-text-gradient font-mono">
                 GOLDENBREAK
               </span>
               <a
@@ -37,13 +37,13 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/20 font-bold flex items-center gap-1 transition-all"
+                className="hidden sm:flex bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/20 font-bold items-center gap-1 transition-all"
               >
                 <Instagram className="w-3 h-3" />
                 <span>goldenbreak.dhk</span>
               </a>
             </div>
-            <p className="text-xs text-slate-400 font-medium">صالة ومطعم بلياردو & كافيه فاخر</p>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium hidden sm:block">صالة ومطعم بلياردو & كافيه فاخر</p>
           </div>
         </div>
 
@@ -79,13 +79,13 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           {/* WhatsApp Direct Button */}
           <a
             href="https://wa.me/9647504596543"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-11 h-11 rounded-xl bg-emerald-500 text-black shadow-lg shadow-emerald-500/10 hover:bg-emerald-400 active:scale-95 transition-all"
+            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-xl bg-emerald-500 text-black shadow-lg shadow-emerald-500/10 hover:bg-emerald-400 active:scale-95 transition-all"
             title="تواصل معنا عبر واتساب"
           >
             <MessageCircle className="w-5.5 h-5.5 fill-black stroke-[1.5]" />
@@ -96,7 +96,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
             href="https://instagram.com/goldenbreak.dhk"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/10 hover:brightness-110 active:scale-95 transition-all"
+            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/10 hover:brightness-110 active:scale-95 transition-all"
             title="حساب إنستغرام"
           >
             <Instagram className="w-5.5 h-5.5 stroke-[2]" />
@@ -105,7 +105,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           {/* Cart Button */}
           <button
             onClick={onOpenCart}
-            className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-black font-bold shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all"
+            className="relative flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-black font-bold shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all"
             aria-label="سلة التسوق"
           >
             <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
