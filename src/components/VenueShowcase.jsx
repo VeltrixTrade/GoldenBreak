@@ -1,7 +1,7 @@
 import React from 'react';
-import { Gamepad2, Coffee, Sparkles, Shield, Trophy, Users } from 'lucide-react';
+import { Gamepad2, Coffee, Sparkles, Shield, Trophy, Users, MessageCircle, Instagram } from 'lucide-react';
 
-export default function VenueShowcase({ onBookNow }) {
+export default function VenueShowcase() {
   return (
     <section className="py-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -111,18 +111,33 @@ export default function VenueShowcase({ onBookNow }) {
         </div>
 
         {/* Bottom CTA Banner */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-amber-500/20 via-amber-600/10 to-transparent border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-amber-500/20 via-amber-600/10 to-transparent border border-amber-500/30 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-2xl sm:text-3xl font-black text-white">ترغب في تجربة لعب مميزة؟</h3>
-            <p className="text-sm text-slate-300 mt-1">احجز طاولتك المفضلة الآن واستمتع بقضاء أجمل الأوقات معنا.</p>
+            <p className="text-sm text-slate-300 mt-1">احجز طاولتك المفضلة الآن واستمتع بقضاء أجمل الأوقات معنا عبر التواصل المباشر.</p>
           </div>
 
-          <button
-            onClick={onBookNow}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-black font-extrabold text-base shadow-xl shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
-          >
-            حجز طاولة بلياردو الآن
-          </button>
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+            <a
+              href="https://wa.me/9647504596543"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:brightness-110 text-black font-extrabold text-base shadow-xl shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 whitespace-nowrap"
+            >
+              <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
+              <span>احجز طاولتك عبر الواتساب</span>
+            </a>
+            
+            <a
+              href="https://instagram.com/goldenbreak.dhk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-4 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-300 border border-white/10 hover:border-pink-500/40 hover:text-pink-400 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 whitespace-nowrap"
+            >
+              <Instagram className="w-5 h-5 text-pink-500" />
+              <span>تابعنا على إنستغرام</span>
+            </a>
+          </div>
         </div>
 
       </div>

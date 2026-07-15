@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Gamepad2, Sparkles, UtensilsCrossed, Instagram } from 'lucide-react';
+import { ShoppingBag, Gamepad2, UtensilsCrossed, Instagram, MessageCircle } from 'lucide-react';
 
 export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, setActiveTab }) {
   const [logoClicks, setLogoClicks] = useState(0);
@@ -74,24 +74,32 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
               <span>جولة في الصالة</span>
             </div>
           </button>
-
-          <button
-            onClick={() => setActiveTab('booking')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-              activeTab === 'booking'
-                ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-md shadow-amber-500/20'
-                : 'text-slate-300 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              <span>حجز طاولة بلياردو</span>
-            </div>
-          </button>
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {/* WhatsApp Direct Button */}
+          <a
+            href="https://wa.me/9647504596543"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-xl bg-emerald-500 text-black shadow-lg shadow-emerald-500/10 hover:bg-emerald-400 active:scale-95 transition-all"
+            title="تواصل معنا عبر واتساب"
+          >
+            <MessageCircle className="w-5.5 h-5.5 fill-black stroke-[1.5]" />
+          </a>
+
+          {/* Instagram Button */}
+          <a
+            href="https://instagram.com/goldenbreak.dhk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/10 hover:brightness-110 active:scale-95 transition-all"
+            title="حساب إنستغرام"
+          >
+            <Instagram className="w-5.5 h-5.5 stroke-[2]" />
+          </a>
+
           {/* Cart Button */}
           <button
             onClick={onOpenCart}

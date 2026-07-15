@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowLeft, Gamepad2, Utensils, Award, Clock } from 'lucide-react';
+import { Sparkles, ArrowLeft, Gamepad2, Utensils, Award, Clock, MessageCircle, Instagram } from 'lucide-react';
 
-export default function Hero({ onExploreMenu, onBookTable }) {
+export default function Hero({ onExploreMenu }) {
   const photos = [
     { src: '/venue_main.jpg', title: 'صالة البلياردو الرئيسية', subtitle: 'طاولات Mr-Sung وإضاءات سقفية فاخرة' },
     { src: '/venue_coffee.jpg', title: 'كافيه ومشروبات مختصة', subtitle: 'إسبريسو، عصائر وكوكتيلات منعشة' },
@@ -49,17 +49,29 @@ export default function Hero({ onExploreMenu, onBookTable }) {
               className="flex items-center gap-3 px-7 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-black font-extrabold text-base shadow-xl shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all"
             >
               <Utensils className="w-5 h-5 stroke-[2.5]" />
-              <span>تصفح قائمة الطعام</span>
+              <span>تصفح أقسام المنيو</span>
               <ArrowLeft className="w-4 h-4" />
             </button>
 
-            <button
-              onClick={onBookTable}
-              className="flex items-center gap-3 px-7 py-4 rounded-xl bg-dark-800 hover:bg-dark-700 text-white border border-white/15 font-bold text-base hover:border-amber-500/50 transition-all"
+            <a
+              href="https://wa.me/9647504596543"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-7 py-4 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 font-extrabold text-base hover:scale-105 active:scale-95 transition-all"
             >
-              <Gamepad2 className="w-5 h-5 text-amber-400" />
-              <span>حجز طاولة لعب</span>
-            </button>
+              <MessageCircle className="w-5 h-5 fill-emerald-400/10" />
+              <span>راسلنا على واتساب</span>
+            </a>
+
+            <a
+              href="https://instagram.com/goldenbreak.dhk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-5 py-4 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-300 border border-white/10 font-bold text-base hover:border-pink-500/40 hover:text-pink-400 hover:scale-105 active:scale-95 transition-all"
+            >
+              <Instagram className="w-5 h-5 text-pink-500" />
+              <span>إنستغرام الصالة</span>
+            </a>
           </div>
 
           {/* Stats Bar */}
