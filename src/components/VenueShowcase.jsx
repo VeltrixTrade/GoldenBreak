@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gamepad2, Coffee, Sparkles, Shield, Trophy, Users, MessageCircle, Instagram } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export default function VenueShowcase() {
   return (
@@ -75,69 +75,6 @@ export default function VenueShowcase() {
             </div>
           </div>
 
-        </div>
-
-        {/* Features Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
-          <div className="p-6 rounded-2xl glass-card border border-white/10 space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Trophy className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-bold text-white">معايير البطولات</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              جميع الطاولات في صالة GOLDENBREAK مجهزة بأعلى مواصفات الإتحاد الدولي للبلياردو والسنوكر.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl glass-card border border-white/10 space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Coffee className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-bold text-white">كافيه ومطعم متكامل</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              وجبات طازجة، بيتزا وبرجر متبل، مع تشكيلة واسعة من المشروبات الساخنة والباردة.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl glass-card border border-white/10 space-y-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Users className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-bold text-white">أجواء عائلية وشبابية</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              إمكانية حجز طاولات VIP خاصة للأصدقاء والمجموعات لضمان أقصى درجات الخصوصية والراحة.
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom CTA Banner */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-amber-500/20 via-amber-600/10 to-transparent border border-amber-500/30 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-black text-white">ترغب في تجربة لعب مميزة؟</h3>
-            <p className="text-sm text-slate-300 mt-1">احجز طاولتك المفضلة الآن واستمتع بقضاء أجمل الأوقات معنا عبر التواصل المباشر.</p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
-            <a
-              href="https://wa.me/9647504596543"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:brightness-110 text-black font-extrabold text-base shadow-xl shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 whitespace-nowrap"
-            >
-              <MessageCircle className="w-5 h-5 fill-black stroke-[2]" />
-              <span>احجز طاولتك عبر الواتساب</span>
-            </a>
-            
-            <a
-              href="https://instagram.com/goldenbreak.dhk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-4 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-300 border border-white/10 hover:border-pink-500/40 hover:text-pink-400 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 whitespace-nowrap"
-            >
-              <Instagram className="w-5 h-5 text-pink-500" />
-              <span>تابعنا على إنستغرام</span>
-            </a>
-          </div>
         </div>
 
       </div>
