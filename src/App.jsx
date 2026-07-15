@@ -5,6 +5,7 @@ import MenuCard from './components/MenuCard';
 import CartDrawer from './components/CartDrawer';
 import AdminModal from './components/AdminModal';
 import VenueShowcase from './components/VenueShowcase';
+import ParticlesBackground from './components/ParticlesBackground';
 import { DEFAULT_CATEGORIES, DEFAULT_ITEMS } from './data/initialData';
 import { 
   Gamepad2, Phone, MapPin, Clock, Heart, UtensilsCrossed, Instagram, MessageCircle,
@@ -215,7 +216,8 @@ export default function App() {
   }, [items, selectedCategory, searchQuery, itemSortOrder]);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black relative">
+      <ParticlesBackground />
       
       {/* Top Header Navigation */}
       <Navbar

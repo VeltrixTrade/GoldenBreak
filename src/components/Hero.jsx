@@ -110,13 +110,15 @@ export default function Hero({ onExploreMenu }) {
                 <div
                   key={index}
                   className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    index === activePhoto ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                    index === activePhoto ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
                   <img
                     src={photo.src}
                     alt={photo.title}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${
+                      index === activePhoto ? 'animate-kenBurns' : ''
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <span className="inline-block px-3 py-1 bg-amber-500 text-black text-xs font-black rounded-md w-fit mb-2">
