@@ -22,9 +22,11 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
         
         {/* Logo & Brand (Secret Triple-Click to open Admin) */}
         <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK @goldenbreak.dhk">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-            <Gamepad2 className="w-7 h-7 text-black stroke-[2.5]" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="GOLDENBREAK Logo" 
+            className="w-12 h-12 rounded-full object-cover border border-amber-500/30 group-hover:scale-105 transition-transform duration-300 bg-black shadow-lg shadow-amber-500/10"
+          />
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-2xl tracking-wider gold-text-gradient font-mono">

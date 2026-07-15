@@ -545,9 +545,11 @@ export default function App() {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-black font-extrabold">
-                <Gamepad2 className="w-6 h-6 stroke-[2.5]" />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="GOLDENBREAK Logo" 
+                className="w-11 h-11 rounded-full object-cover border border-amber-500/20 bg-black shadow-md shadow-amber-500/5"
+              />
               <span className="text-2xl font-black gold-text-gradient font-mono">GOLDENBREAK</span>
             </div>
             <p className="text-xs leading-relaxed max-w-sm">

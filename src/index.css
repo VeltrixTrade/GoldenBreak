@@ -6,8 +6,8 @@
   body {
     @apply bg-[#090A0F] text-slate-100 font-sans min-h-screen;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.04) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(255, 227, 0, 0.04) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.03) 0px, transparent 50%);
   }
 }
 
@@ -23,7 +23,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #CA8A04;
+  background: #FFE300;
 }
 
 /* Glassmorphism utility */
@@ -42,17 +42,17 @@
 }
 
 .glass-card:hover {
-  border-color: rgba(234, 179, 8, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(234, 179, 8, 0.15);
+  border-color: rgba(255, 227, 0, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(255, 227, 0, 0.12);
   transform: translateY(-4px);
 }
 
 .gold-glow {
-  box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+  box-shadow: 0 0 20px rgba(255, 227, 0, 0.25);
 }
 
 .gold-text-gradient {
-  background: linear-gradient(135deg, #FFF 0%, #FACC15 50%, #CA8A04 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFE300 60%, #B8A300 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
