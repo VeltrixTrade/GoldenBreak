@@ -401,7 +401,7 @@ export default function App() {
                 >
                   <img 
                     src="/arrow.png" 
-                    style={{ width: '39px', transform: 'rotate(180deg)', marginRight: '-14px' }} 
+                    style={{ width: '20px', height: '20px', transform: 'rotate(180deg)' }} 
                     alt="Back"
                   />
                 </a>

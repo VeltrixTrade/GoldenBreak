@@ -66,16 +66,15 @@
 /* Back button peeking from left edge */
 #backbtn1 {
   color: #181818;
-  left: -29px;
+  left: 16px;
   top: 15%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 18px;
-  height: 79px;
+  justify-content: center;
+  height: 50px;
   position: fixed;
-  width: 91px;
-  border-radius: 77px;
+  width: 50px;
+  border-radius: 50%;
   transition: all 0.3s ease;
   z-index: 999;
   background-color: #e09824;
@@ -83,7 +82,7 @@
 }
 
 #backbtn1:hover {
-  left: -15px;
+  transform: scale(1.1);
   background-color: #f2ae3d;
 }
 
