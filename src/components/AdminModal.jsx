@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Plus, Trash2, DollarSign, Tag, FileText, Lock, CheckCircle, RefreshCw, Layers, Utensils, X } from 'lucide-react';
+import { ShieldCheck, Plus, Trash2, DollarSign, Tag, FileText, Lock, CheckCircle, RefreshCw, Layers, Utensils, X, Image as ImageIcon } from 'lucide-react';
 
 export default function AdminModal({
   isOpen,
@@ -7,9 +7,11 @@ export default function AdminModal({
   categories,
   onAddCategory,
   onDeleteCategory,
+  onUpdateCategory,
   items,
   onAddItem,
   onDeleteItem,
+  onUpdateItem,
   onResetData
 }) {
   const [authenticated, setAuthenticated] = useState(false);
@@ -27,12 +29,14 @@ export default function AdminModal({
   const [descriptionAr, setDescriptionAr] = useState('');
   const [descriptionEn, setDescriptionEn] = useState('');
   const [popular, setPopular] = useState(false);
+  const [itemImage, setItemImage] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
   // New Category Form State
   const [newCatNameAr, setNewCatNameAr] = useState('');
   const [newCatNameEn, setNewCatNameEn] = useState('');
   const [newCatIcon, setNewCatIcon] = useState('Utensils');
+  const [newCatImage, setNewCatImage] = useState('');
 
   if (!isOpen) return null;
 
@@ -44,6 +48,17 @@ export default function AdminModal({
     } else {
       setPassError(true);
     }
+  };
+
+  // Base64 File Uploader Helper
+  const handleFileChange = (e, callback) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      callback(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleCreateItem = (e) => {
@@ -63,7 +78,8 @@ export default function AdminModal({
       currency,
       descriptionAr,
       descriptionEn,
-      popular
+      popular,
+      image: itemImage
     };
 
     onAddItem(newItem);
@@ -76,6 +92,7 @@ export default function AdminModal({
     setDescriptionAr('');
     setDescriptionEn('');
     setPopular(false);
+    setItemImage('');
 
     setTimeout(() => setSuccessMsg(''), 4000);
   };
@@ -89,12 +106,14 @@ export default function AdminModal({
       id: newCatId,
       nameAr: newCatNameAr,
       nameEn: newCatNameEn,
-      icon: newCatIcon
+      icon: newCatIcon,
+      image: newCatImage
     };
 
     onAddCategory(newCatObj);
     setNewCatNameAr('');
     setNewCatNameEn('');
+    setNewCatImage('');
     setSuccessMsg(`تمت إضافة القسم "${newCatNameAr}" بنجاح!`);
     setTimeout(() => setSuccessMsg(''), 4000);
   };
@@ -114,7 +133,7 @@ export default function AdminModal({
                 لوحة إدراج الوجبات والأقسام
                 <span className="bg-amber-500 text-black text-[10px] px-2.5 py-0.5 rounded-full font-extrabold">ADMIN</span>
               </h2>
-              <p className="text-xs text-slate-400">إدارة الوجبات بالنكهتين العربية والإنجليزية وبدون صور طعام</p>
+              <p className="text-xs text-slate-400">إدارة الوجبات والأسعار والأقسام مع إمكانية رفع وتعديل الصور</p>
             </div>
           </div>
 
@@ -302,6 +321,54 @@ export default function AdminModal({
                   </div>
                 </div>
 
+                {/* Image Upload Widget */}
+                <div className="border border-white/5 bg-dark-900/40 p-4 rounded-2xl space-y-3">
+                  <span className="block text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                    <ImageIcon className="w-3.5 h-3.5 text-amber-400" />
+                    صورة الوجبة (اختياري)
+                  </span>
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    {/* Thumbnail Preview */}
+                    <div className="w-16 h-16 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
+                      {itemImage ? (
+                        <img src={itemImage} className="w-full h-full object-cover" alt="Preview" />
+                      ) : (
+                        <Utensils className="w-6 h-6 text-slate-500" />
+                      )}
+                    </div>
+                    {/* File upload or URL inputs */}
+                    <div className="flex-1 w-full space-y-2">
+                      <div className="flex gap-2">
+                        <label className="flex-1 flex items-center justify-center px-4 py-2 bg-dark-700 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs font-bold border border-white/5 cursor-pointer transition-all">
+                          <span>رفع صورة من الجهاز</span>
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            className="hidden" 
+                            onChange={(e) => handleFileChange(e, setItemImage)} 
+                          />
+                        </label>
+                        {itemImage && (
+                          <button
+                            type="button"
+                            onClick={() => setItemImage('')}
+                            className="px-3 py-2 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white rounded-xl text-xs font-bold border border-red-500/20 transition-all"
+                          >
+                            حذف
+                          </button>
+                        )}
+                      </div>
+                      <input 
+                        type="text"
+                        placeholder="أو ضع رابط صورة مباشر (URL)..."
+                        value={itemImage}
+                        onChange={(e) => setItemImage(e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Popular Checkbox */}
                 <div className="flex items-center gap-2 pt-2">
                   <input
@@ -365,7 +432,7 @@ export default function AdminModal({
                     <select
                       value={newCatIcon}
                       onChange={(e) => setNewCatIcon(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-white/10 text-sm text-white focus:border-amber-500 outline-none mb-3"
                     >
                       <option value="Utensils">🍴 وجبات عامة (Utensils)</option>
                       <option value="Drumstick">🍗 فاست فود ولحوم (Drumstick)</option>
@@ -380,9 +447,57 @@ export default function AdminModal({
                     </select>
                   </div>
 
+                  {/* Category Image Upload */}
+                  <div className="border border-white/5 bg-dark-900/40 p-4 rounded-2xl space-y-3">
+                    <span className="block text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                      <ImageIcon className="w-3.5 h-3.5 text-amber-400" />
+                      صورة القسم (اختياري)
+                    </span>
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                      {/* Thumbnail Preview */}
+                      <div className="w-16 h-16 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        {newCatImage ? (
+                          <img src={newCatImage} className="w-full h-full object-cover" alt="Preview" />
+                        ) : (
+                          <Layers className="w-6 h-6 text-slate-500" />
+                        )}
+                      </div>
+                      {/* File upload or URL inputs */}
+                      <div className="flex-1 w-full space-y-2">
+                        <div className="flex gap-2">
+                          <label className="flex-1 flex items-center justify-center px-4 py-2 bg-dark-700 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl text-xs font-bold border border-white/5 cursor-pointer transition-all">
+                            <span>رفع صورة القسم</span>
+                            <input 
+                              type="file" 
+                              accept="image/*" 
+                              className="hidden" 
+                              onChange={(e) => handleFileChange(e, setNewCatImage)} 
+                            />
+                          </label>
+                          {newCatImage && (
+                            <button
+                              type="button"
+                              onClick={() => setNewCatImage('')}
+                              className="px-3 py-2 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white rounded-xl text-xs font-bold border border-red-500/20 transition-all"
+                            >
+                              حذف
+                            </button>
+                          )}
+                        </div>
+                        <input 
+                          type="text"
+                          placeholder="أو رابط صورة القسم (URL)..."
+                          value={newCatImage}
+                          onChange={(e) => setNewCatImage(e.target.value)}
+                          className="w-full px-3 py-1.5 rounded-lg bg-dark-700 border border-white/10 text-xs text-white focus:border-amber-500 outline-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-xl bg-amber-500 text-black font-extrabold text-sm hover:brightness-110 transition-all"
+                    className="w-full py-3.5 rounded-xl bg-amber-500 text-black font-extrabold text-sm hover:brightness-110 transition-all mt-3"
                   >
                     إضافة القسم
                   </button>
@@ -390,25 +505,56 @@ export default function AdminModal({
 
                 {/* Existing Categories List */}
                 <div>
-                  <h4 className="text-sm font-bold text-slate-300 mb-3">الأقسام الحالية:</h4>
+                  <h4 className="text-sm font-bold text-slate-300 mb-3">الأقسام الحالية (اضغط على الصورة لتعديلها):</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {categories.filter(c => c.id !== 'all').map((cat) => (
-                      <div
-                        key={cat.id}
-                        className="flex items-center justify-between p-3 rounded-xl bg-dark-700/60 border border-white/5"
-                      >
-                        <span className="text-sm font-bold text-white">
-                          {cat.nameAr || cat.name} {cat.nameEn ? `(${cat.nameEn})` : ''}
-                        </span>
-                        <button
-                          onClick={() => onDeleteCategory(cat.id)}
-                          className="text-slate-500 hover:text-red-400 p-1 transition-colors"
-                          title="حذف القسم"
+                    {categories.filter(c => c.id !== 'all').map((cat) => {
+                      const getCatPlaceholder = (catId) => {
+                        switch (catId) {
+                          case 'shisha': return '/category/hookah_1774332374.png';
+                          case 'mojitos': return '/category/mojito.png';
+                          case 'milkshakes-smoothies': return '/category/milkshake.png';
+                          case 'crepes': case 'sweets-snacks': return '/category/desserts.png';
+                          case 'cocktails-juices': return '/category/organic_juice.png';
+                          case 'hot-drinks': return '/category/hot_drinks.png';
+                          case 'mexican-energy': case 'energy-drinks': return '/category/redbull.png';
+                          case 'soft-drinks': return '/category/cold_drinks.png';
+                          default: return '/category/food.png';
+                        }
+                      };
+
+                      return (
+                        <div
+                          key={cat.id}
+                          className="flex items-center justify-between p-3 rounded-xl bg-dark-700/60 border border-white/5"
                         >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    ))}
+                          <div className="flex items-center gap-3">
+                            {/* Clickable thumbnail to update picture */}
+                            <label className="relative w-10 h-10 rounded-full bg-dark-800 border border-white/10 flex items-center justify-center overflow-hidden cursor-pointer group flex-shrink-0" title="اضغط لتغيير الصورة">
+                              <img src={cat.image || getCatPlaceholder(cat.id)} className="w-full h-full object-cover group-hover:opacity-75 transition-opacity" alt="" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                                <Plus className="w-3 h-3 text-white" />
+                              </div>
+                              <input 
+                                type="file" 
+                                accept="image/*" 
+                                className="hidden" 
+                                onChange={(e) => handleFileChange(e, (base64) => onUpdateCategory({ ...cat, image: base64 }))} 
+                              />
+                            </label>
+                            <span className="text-sm font-bold text-white">
+                              {cat.nameAr || cat.name} {cat.nameEn ? `(${cat.nameEn})` : ''}
+                            </span>
+                          </div>
+                          <button
+                            onClick={() => onDeleteCategory(cat.id)}
+                            className="text-slate-500 hover:text-red-400 p-1 transition-colors"
+                            title="حذف القسم"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -418,7 +564,7 @@ export default function AdminModal({
             {activeTab === 'manageItems' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs text-slate-400">إجمالي الوجبات في القائمة: {items.length}</p>
+                  <p className="text-xs text-slate-400">إجمالي الوجبات في القائمة: {items.length} (اضغط على صورة الوجبة لتغييرها)</p>
                   <button
                     onClick={onResetData}
                     className="flex items-center gap-1.5 text-xs text-amber-400 hover:underline"
@@ -429,29 +575,61 @@ export default function AdminModal({
                 </div>
 
                 <div className="max-h-96 overflow-y-auto space-y-2 pr-1">
-                  {items.map((item) => (
-                    <div
-                      key={item.id}
-                      className="flex items-center justify-between gap-3 p-3 rounded-xl bg-dark-700/60 border border-white/5 hover:border-white/10 transition-all"
-                    >
-                      <div className="flex-1 min-w-0">
-                        <h5 className="text-sm font-bold text-white truncate">
-                          {item.nameAr || item.name} {item.nameEn ? `(${item.nameEn})` : ''}
-                        </h5>
-                        <p className="text-xs text-slate-400">
-                          {item.categoryNameAr || item.categoryName} • <span className="text-amber-400 font-bold font-mono">{typeof item.price === 'number' ? item.price.toLocaleString() : item.price} {item.currency || 'د.ع'}</span>
-                        </p>
-                      </div>
+                  {items.map((item) => {
+                    const getPlaceholderImage = (itemCat) => {
+                      switch (itemCat) {
+                        case 'fast-food': return '/category/food.png';
+                        case 'mojitos': return '/category/mojito.png';
+                        case 'milkshakes-smoothies': return '/category/milkshake.png';
+                        case 'crepes': case 'sweets-snacks': return '/category/desserts.png';
+                        case 'cocktails-juices': return '/category/organic_juice.png';
+                        case 'hot-drinks': return '/category/hot_drinks.png';
+                        case 'mexican-energy': case 'energy-drinks': return '/category/redbull.png';
+                        case 'soft-drinks': return '/category/cold_drinks.png';
+                        case 'shisha': return '/category/hookah_1774332374.png';
+                        default: return '/category/food.png';
+                      }
+                    };
 
-                      <button
-                        onClick={() => onDeleteItem(item.id)}
-                        className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
-                        title="حذف الوجبة"
+                    return (
+                      <div
+                        key={item.id}
+                        className="flex items-center justify-between gap-3 p-3 rounded-xl bg-dark-700/60 border border-white/5 hover:border-white/10 transition-all"
                       >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                          {/* Clickable thumbnail to update picture */}
+                          <label className="relative w-11 h-11 rounded-full bg-dark-800 border border-white/10 flex items-center justify-center overflow-hidden cursor-pointer group flex-shrink-0" title="اضغط لتغيير الصورة">
+                            <img src={item.image || getPlaceholderImage(item.category)} className="w-full h-full object-cover group-hover:opacity-75 transition-opacity" alt="" />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                              <Plus className="w-3 h-3 text-white" />
+                            </div>
+                            <input 
+                              type="file" 
+                              accept="image/*" 
+                              className="hidden" 
+                              onChange={(e) => handleFileChange(e, (base64) => onUpdateItem({ ...item, image: base64 }))} 
+                            />
+                          </label>
+                          <div className="min-w-0">
+                            <h5 className="text-sm font-bold text-white truncate">
+                              {item.nameAr || item.name} {item.nameEn ? `(${item.nameEn})` : ''}
+                            </h5>
+                            <p className="text-xs text-slate-400">
+                              {item.categoryNameAr || item.categoryName} • <span className="text-amber-400 font-bold font-mono">{typeof item.price === 'number' ? item.price.toLocaleString() : item.price} {item.currency || 'د.ع'}</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => onDeleteItem(item.id)}
+                          className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                          title="حذف الوجبة"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

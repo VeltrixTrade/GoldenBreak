@@ -124,6 +124,14 @@ export default function App() {
     setItems((prev) => [newItem, ...prev]);
   };
 
+  const handleUpdateCategory = (updatedCat) => {
+    setCategories((prev) => prev.map((c) => c.id === updatedCat.id ? updatedCat : c));
+  };
+
+  const handleUpdateItem = (updatedItem) => {
+    setItems((prev) => prev.map((i) => i.id === updatedItem.id ? updatedItem : i));
+  };
+
   const handleDeleteItem = (itemId) => {
     setItems((prev) => prev.filter((i) => i.id !== itemId));
   };
@@ -376,7 +384,7 @@ export default function App() {
                         >
                           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 flex items-center justify-center rounded-full overflow-hidden transition-all duration-300 bg-dark-900/10 border border-white/5 hover:border-[#e09824]/20">
                             <img 
-                              src={getCategoryImg(cat.id)} 
+                              src={cat.image || getCategoryImg(cat.id)} 
                               alt={nameEn} 
                               className="w-[90%] h-[90%] object-contain group-hover:scale-115 transition-transform duration-500"
                             />
@@ -533,9 +541,11 @@ export default function App() {
         categories={categories}
         onAddCategory={handleAddCategory}
         onDeleteCategory={handleDeleteCategory}
+        onUpdateCategory={handleUpdateCategory}
         items={items}
         onAddItem={handleAddItem}
         onDeleteItem={handleDeleteItem}
+        onUpdateItem={handleUpdateItem}
         onResetData={handleResetData}
       />
 
