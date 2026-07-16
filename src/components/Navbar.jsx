@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, Gamepad2, UtensilsCrossed, Instagram, MessageCircle } from 'lucide-react';
 
-export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, setActiveTab }) {
+export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, setActiveTab, lang }) {
   const [logoClicks, setLogoClicks] = useState(0);
 
   // Secret Admin Trigger: Triple click on the logo
@@ -16,8 +16,10 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
     setTimeout(() => setLogoClicks(0), 1500);
   };
 
+  const isAr = lang === 'ar';
+
   return (
-    <header className="sticky top-0 z-40 w-full bg-dark-900/40 backdrop-blur-md border-b border-white/5">
+    <header className="sticky top-0 z-40 w-full bg-dark-900/40 backdrop-blur-md border-b border-white/5" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* Logo & Brand (Secret Triple-Click to open Admin) */}
@@ -48,7 +50,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           >
             <div className="flex items-center gap-1.5">
               <UtensilsCrossed className="w-3.5 h-3.5" />
-              <span>قائمة الطعام • Menu</span>
+              <span>{isAr ? 'قائمة الطعام • Menu' : 'Menu'}</span>
             </div>
           </button>
 
@@ -62,7 +64,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
           >
             <div className="flex items-center gap-1.5">
               <Gamepad2 className="w-3.5 h-3.5" />
-              <span>جولة في الصالة</span>
+              <span>{isAr ? 'جولة في الصالة' : 'Venue Tour'}</span>
             </div>
           </button>
         </nav>

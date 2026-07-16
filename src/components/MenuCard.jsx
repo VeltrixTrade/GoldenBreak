@@ -1,11 +1,13 @@
 import React from 'react';
 import { Plus, Check, Star } from 'lucide-react';
 
-export default function MenuCard({ item, onAddToCart, inCart }) {
+export default function MenuCard({ item, onAddToCart, inCart, lang }) {
   const nameAr = item.nameAr || item.name || '';
   const nameEn = item.nameEn || '';
   const descAr = item.descriptionAr || item.description || '';
   const descEn = item.descriptionEn || '';
+
+  const isAr = lang === 'ar';
 
   // Helper to resolve category images similar to Qzone
   const getPlaceholderImage = () => {
@@ -38,13 +40,13 @@ export default function MenuCard({ item, onAddToCart, inCart }) {
   const imageSrc = item.image || getPlaceholderImage();
 
   return (
-    <div className="w-full flex items-start gap-4 p-3 rounded-2xl hover:bg-dark-800/30 transition-all duration-300 group min-h-[120px]">
+    <div className="w-full flex items-start gap-4 p-3 rounded-2xl hover:bg-dark-800/30 transition-all duration-300 group min-h-[120px]" dir={isAr ? 'rtl' : 'ltr'}>
       
       {/* Circular Item Image (Styled exactly like Qzone .pq-food-price-img) */}
       <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-white/5 bg-dark-900 relative shadow-md">
         <img 
           src={imageSrc} 
-          alt={nameAr} 
+          alt={isAr ? nameAr : (nameEn || nameAr)} 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           onError={(e) => {
             e.target.src = getPlaceholderImage();
@@ -67,11 +69,16 @@ export default function MenuCard({ item, onAddToCart, inCart }) {
             {/* Title block */}
             <div className="flex-shrink-0">
               <h5 className="text-base sm:text-lg font-bold text-white tracking-wide truncate">
-                {nameAr}
+                {isAr ? nameAr : (nameEn || nameAr)}
               </h5>
-              {nameEn && (
+              {isAr && nameEn && (
                 <span className="block text-xs text-[#e09824] font-medium font-mono uppercase tracking-wider opacity-90 truncate">
                   {nameEn}
+                </span>
+              )}
+              {!isAr && nameAr && nameEn && (
+                <span className="block text-xs text-[#e09824] font-medium tracking-wider opacity-90 truncate">
+                  {nameAr}
                 </span>
               )}
             </div>
@@ -84,16 +91,17 @@ export default function MenuCard({ item, onAddToCart, inCart }) {
               <span className="text-base sm:text-lg font-bold text-[#e09824] font-mono">
                 {typeof item.price === 'number' ? item.price.toLocaleString() : item.price}
               </span>
-              <span className="text-[10px] text-slate-400 font-normal mr-1">د.ع</span>
+              <span className="text-[10px] text-slate-400 font-normal mr-1">{isAr ? 'د.ع' : 'IQD'}</span>
             </div>
 
           </div>
 
           {/* Description block */}
-          {(descAr || descEn) && (
+          {(isAr ? descAr : (descEn || descAr)) && (
             <p className="text-slate-400 text-xs mt-1.5 leading-relaxed line-clamp-2">
-              {descAr}
-              {descEn && <span className="block text-[10px] text-slate-500 italic mt-0.5">{descEn}</span>}
+              {isAr ? descAr : (descEn || descAr)}
+              {isAr && descEn && <span className="block text-[10px] text-slate-500 italic mt-0.5">{descEn}</span>}
+              {!isAr && descAr && descEn && <span className="block text-[10px] text-slate-500 italic mt-0.5">{descAr}</span>}
             </p>
           )}
         </div>
@@ -111,12 +119,12 @@ export default function MenuCard({ item, onAddToCart, inCart }) {
             {inCart ? (
               <>
                 <Check className="w-3.5 h-3.5 stroke-[3]" />
-                <span>تمت الإضافة</span>
+                <span>{isAr ? 'تمت الإضافة' : 'Added'}</span>
               </>
             ) : (
               <>
                 <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span>إضافة • Add</span>
+                <span>{isAr ? 'إضافة • Add' : 'Add to Cart'}</span>
               </>
             )}
           </button>

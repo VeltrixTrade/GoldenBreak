@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Hero({ onOpenAdmin }) {
+export default function Hero({ onOpenAdmin, currentLang, onLanguageChange }) {
   const [logoClicks, setLogoClicks] = useState(0);
 
   // Secret Admin Trigger: Triple click on the hero logo
@@ -40,13 +40,23 @@ export default function Hero({ onOpenAdmin }) {
           {/* Refresh Shopping Buttons / Language Selector (styled exactly like QZONE) */}
           <div className="flex items-center justify-center gap-3 pt-3">
             <button 
-              className="px-6 py-1.5 border border-[#e09824] rounded-[17px] text-white hover:bg-[#e09824] hover:text-[#101418] transition-all text-base md:text-xl font-medium"
+              onClick={() => onLanguageChange('ar')}
+              className={`px-6 py-1.5 border border-[#e09824] rounded-[17px] transition-all text-base md:text-xl font-medium ${
+                currentLang === 'ar' 
+                  ? 'bg-[#e09824] text-[#101418] font-bold' 
+                  : 'bg-transparent text-white hover:bg-[#e09824]/20'
+              }`}
               style={{ fontFamily: 'Tajawal, sans-serif' }}
             >
               العربي
             </button>
             <button 
-              className="px-6 py-1.5 border border-[#e09824] rounded-[17px] text-white hover:bg-[#e09824] hover:text-[#101418] transition-all text-base md:text-xl font-medium"
+              onClick={() => onLanguageChange('en')}
+              className={`px-6 py-1.5 border border-[#e09824] rounded-[17px] transition-all text-base md:text-xl font-medium ${
+                currentLang === 'en' 
+                  ? 'bg-[#e09824] text-[#101418] font-bold' 
+                  : 'bg-transparent text-white hover:bg-[#e09824]/20'
+              }`}
             >
               English
             </button>

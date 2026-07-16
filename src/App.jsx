@@ -45,6 +45,7 @@ export default function App() {
   const [itemSortOrder, setItemSortOrder] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('home'); // 'home' | 'venue'
+  const [lang, setLang] = useState('ar'); // 'ar' | 'en'
 
   // Modals visibility
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -216,7 +217,7 @@ export default function App() {
   }, [items, selectedCategory, searchQuery, itemSortOrder]);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black relative">
+    <div className="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black relative" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <ParticlesBackground />
       
       {/* Top Header Navigation */}
@@ -226,6 +227,7 @@ export default function App() {
         onOpenAdmin={() => setIsAdminOpen(true)}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        lang={lang}
       />
 
       {/* Main Content Area */}
@@ -234,7 +236,7 @@ export default function App() {
         {/* VIEW 1: HOME (Hero + Categories Grid / Global Search) */}
         {activeTab === 'home' && (
           <>
-            <Hero onOpenAdmin={() => setIsAdminOpen(true)} />
+            <Hero onOpenAdmin={() => setIsAdminOpen(true)} currentLang={lang} onLanguageChange={setLang} />
 
             {selectedCategory === null ? (
               /* categories list view on home page */
@@ -245,9 +247,11 @@ export default function App() {
                   <div>
                     <h2 className="text-2xl sm:text-3xl font-light text-white flex items-center gap-3">
                       <span className="w-3 h-8 bg-[#e09824] rounded-full inline-block"></span>
-                      <span>أقسام المنيو • Menu Categories</span>
+                      <span>{lang === 'ar' ? 'أقسام المنيو' : 'Menu Categories'}</span>
                     </h2>
-                    <p className="text-slate-400 text-xs sm:text-sm mt-1">تصفح أشهى الأطباق والمشروبات بأقسامنا المتنوعة</p>
+                    <p className="text-slate-400 text-xs sm:text-sm mt-1">
+                      {lang === 'ar' ? 'تصفح أشهى الأطباق والمشروبات بأقسامنا المتنوعة' : 'Browse our premium food and drinks in various categories'}
+                    </p>
                   </div>
 
                   {/* Controls: Global Search + Categories Sorting */}
@@ -257,7 +261,7 @@ export default function App() {
                       <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                       <input
                         type="text"
-                        placeholder="ابحث عن وجبة أو مشروب... / Search..."
+                        placeholder={lang === 'ar' ? 'ابحث عن وجبة أو مشروب...' : 'Search for a dish or drink...'}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full pl-4 pr-10 py-2.5 rounded-xl bg-dark-800 border border-white/5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all font-medium"
@@ -267,7 +271,7 @@ export default function App() {
                           onClick={() => setSearchQuery('')}
                           className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-dark-700 hover:bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded transition-all"
                         >
-                          مسح
+                          {lang === 'ar' ? 'مسح' : 'Clear'}
                         </button>
                       )}
                     </div>
@@ -281,9 +285,9 @@ export default function App() {
                           onChange={(e) => setCategorySortOrder(e.target.value)}
                           className="w-full pl-8 pr-10 py-2.5 rounded-xl bg-dark-800 border border-white/5 text-white text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all appearance-none font-bold cursor-pointer"
                         >
-                          <option value="default">الترتيب الافتراضي • Default</option>
-                          <option value="alphabetical">أبجدياً (العربية) • A-Z</option>
-                          <option value="items-count">حسب عدد العناصر • Popular</option>
+                          <option value="default">{lang === 'ar' ? 'الترتيب الافتراضي' : 'Default Order'}</option>
+                          <option value="alphabetical">{lang === 'ar' ? 'أبجدياً (العربية)' : 'Alphabetical (A-Z)'}</option>
+                          <option value="items-count">{lang === 'ar' ? 'حسب عدد العناصر' : 'Popularity (Item Count)'}</option>
                         </select>
                         <ChevronDown className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
                       </div>
@@ -297,21 +301,21 @@ export default function App() {
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm sm:text-base font-bold text-slate-300">
-                        نتائج البحث عن: <span className="text-[#e09824] font-black">"{searchQuery}"</span> ({globalSearchResults.length} نتيجة)
+                        {lang === 'ar' ? 'نتائج البحث عن:' : 'Search results for:'} <span className="text-[#e09824] font-black">"{searchQuery}"</span> ({globalSearchResults.length} {lang === 'ar' ? 'نتيجة' : 'results'})
                       </h3>
                       <button
                         onClick={() => setSearchQuery('')}
                         className="text-xs text-[#e09824] hover:underline"
                       >
-                        العودة للأقسام
+                        {lang === 'ar' ? 'العودة للأقسام' : 'Back to Categories'}
                       </button>
                     </div>
 
                     {globalSearchResults.length === 0 ? (
                       <div className="text-center py-20 bg-dark-800/40 rounded-3xl border border-white/5 space-y-4">
                         <UtensilsCrossed className="w-16 h-16 text-slate-600 mx-auto stroke-1" />
-                        <h3 className="text-lg font-bold text-slate-300">لم يتم العثور على نتائج • No items found</h3>
-                        <p className="text-xs text-slate-500">جرب البحث بكلمات أخرى.</p>
+                        <h3 className="text-lg font-bold text-slate-300">{lang === 'ar' ? 'لم يتم العثور على نتائج' : 'No items found'}</h3>
+                        <p className="text-xs text-slate-500">{lang === 'ar' ? 'جرب البحث بكلمات أخرى.' : 'Try searching with other words.'}</p>
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-8 max-w-6xl mx-auto">
@@ -321,6 +325,7 @@ export default function App() {
                             item={item}
                             onAddToCart={handleAddToCart}
                             inCart={cart.some((c) => c.id === item.id)}
+                            lang={lang}
                           />
                         ))}
                       </div>
@@ -424,7 +429,7 @@ export default function App() {
                     <div className="text-center mb-10 max-w-2xl mx-auto">
                       <span className="text-[#e09824] font-serif italic text-lg block mb-1">Delicious</span>
                       <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-slate-300 uppercase tracking-widest">
-                        {catObj.nameEn || catObj.nameAr}
+                        {lang === 'ar' ? (catObj.nameAr || catObj.nameEn) : (catObj.nameEn || catObj.nameAr)}
                       </h2>
                       <hr className="border-t border-[#e09824] my-6 max-w-xs mx-auto opacity-70" />
 
@@ -435,7 +440,7 @@ export default function App() {
                           <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                           <input
                             type="text"
-                            placeholder="ابحث في هذا القسم... / Search..."
+                            placeholder={lang === 'ar' ? 'ابحث في هذا القسم...' : 'Search inside category...'}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full pl-4 pr-9 py-2 rounded-xl bg-dark-800 border border-white/5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all font-medium"
@@ -445,7 +450,7 @@ export default function App() {
                               onClick={() => setSearchQuery('')}
                               className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] bg-dark-700 hover:bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded transition-all"
                             >
-                              مسح
+                              {lang === 'ar' ? 'مسح' : 'Clear'}
                             </button>
                           )}
                         </div>
@@ -458,11 +463,11 @@ export default function App() {
                             onChange={(e) => setItemSortOrder(e.target.value)}
                             className="w-full pl-8 pr-9 py-2 rounded-xl bg-dark-800 border border-white/5 text-white text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all appearance-none cursor-pointer"
                           >
-                            <option value="default">الترتيب الافتراضي • Default</option>
-                            <option value="price-low">السعر: من الأقل للأعلى • Price Low</option>
-                            <option value="price-high">السعر: من الأعلى للأقل • Price High</option>
-                            <option value="popular">الأكثر شعبية ⭐ Popular</option>
-                            <option value="name">ترتيب بالاسم أبجدياً • Name</option>
+                            <option value="default">{lang === 'ar' ? 'الترتيب الافتراضي' : 'Default Order'}</option>
+                            <option value="price-low">{lang === 'ar' ? 'السعر: من الأقل للأعلى' : 'Price: Low to High'}</option>
+                            <option value="price-high">{lang === 'ar' ? 'السعر: من الأعلى للأقل' : 'Price: High to Low'}</option>
+                            <option value="popular">{lang === 'ar' ? 'الأكثر شعبية' : 'Popularity (Most Active)'}</option>
+                            <option value="name">{lang === 'ar' ? 'ترتيب بالاسم أبجدياً' : 'Name (A-Z)'}</option>
                           </select>
                           <ChevronDown className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
                         </div>
@@ -475,9 +480,12 @@ export default function App() {
                 {categoryItems.length === 0 ? (
                   <div className="text-center py-20 bg-dark-800/40 rounded-3xl border border-white/5 space-y-4">
                     <UtensilsCrossed className="w-16 h-16 text-slate-600 mx-auto stroke-1" />
-                    <h3 className="text-lg font-bold text-slate-300">لم يتم العثور على أطباق • No items found</h3>
+                    <h3 className="text-lg font-bold text-slate-300">{lang === 'ar' ? 'لم يتم العثور على أطباق' : 'No items found'}</h3>
                     <p className="text-xs text-slate-500">
-                      هذا القسم فارغ حالياً أو لم يتم العثور على نتائج بحث مطابقة.
+                      {lang === 'ar' 
+                        ? 'هذا القسم فارغ حالياً أو لم يتم العثور على نتائج بحث مطابقة.' 
+                        : 'This category is empty or no search results matched.'
+                      }
                     </p>
                   </div>
                 ) : (
@@ -488,6 +496,7 @@ export default function App() {
                         item={item}
                         onAddToCart={handleAddToCart}
                         inCart={cart.some((c) => c.id === item.id)}
+                        lang={lang}
                       />
                     ))}
                   </div>
@@ -496,13 +505,13 @@ export default function App() {
             )}
 
             {/* Venue Showcase */}
-            <VenueShowcase />
+            <VenueShowcase lang={lang} />
           </>
         )}
 
         {/* VIEW 2: VENUE SHOWCASE PAGE */}
         {activeTab === 'venue' && (
-          <VenueShowcase />
+          <VenueShowcase lang={lang} />
         )}
 
       </main>
@@ -515,6 +524,7 @@ export default function App() {
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveFromCart}
         onClearCart={handleClearCart}
+        lang={lang}
       />
 
       <AdminModal
