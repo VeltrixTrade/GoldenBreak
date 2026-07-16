@@ -374,14 +374,14 @@ export default function App() {
                           }}
                           className="group cursor-pointer flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-2"
                         >
-                          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center rounded-full overflow-hidden transition-all duration-300">
+                          <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 flex items-center justify-center rounded-full overflow-hidden transition-all duration-300 bg-dark-900/10 border border-white/5 hover:border-[#e09824]/20">
                             <img 
                               src={getCategoryImg(cat.id)} 
                               alt={nameEn} 
-                              className="w-full h-full object-contain group-hover:scale-115 transition-transform duration-500"
+                              className="w-[90%] h-[90%] object-contain group-hover:scale-115 transition-transform duration-500"
                             />
                           </div>
-                          <span className="font-sans text-base sm:text-lg md:text-xl font-normal text-white uppercase tracking-wider text-center mt-3 group-hover:text-[#e09824] transition-colors">
+                          <span className="font-sans text-lg sm:text-xl md:text-2xl font-bold text-white uppercase tracking-wider text-center mt-4 group-hover:text-[#e09824] transition-colors">
                             {nameEn || nameAr}
                           </span>
                         </div>

@@ -43,7 +43,7 @@ export default function MenuCard({ item, onAddToCart, inCart, lang }) {
     <div className="w-full flex items-start gap-4 p-3 rounded-2xl hover:bg-dark-800/30 transition-all duration-300 group min-h-[120px]" dir={isAr ? 'rtl' : 'ltr'}>
       
       {/* Circular Item Image (Styled exactly like Qzone .pq-food-price-img) */}
-      <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-white/5 bg-dark-900 relative shadow-md">
+      <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-[#e09824]/10 bg-dark-900 relative shadow-lg">
         <img 
           src={imageSrc} 
           alt={isAr ? nameAr : (nameEn || nameAr)} 
@@ -68,7 +68,7 @@ export default function MenuCard({ item, onAddToCart, inCart, lang }) {
             
             {/* Title block */}
             <div className="flex-shrink-0">
-              <h5 className="text-base sm:text-lg font-bold text-white tracking-wide truncate">
+              <h5 className="text-lg sm:text-xl font-bold text-white tracking-wide truncate">
                 {isAr ? nameAr : (nameEn || nameAr)}
               </h5>
               {isAr && nameEn && (
