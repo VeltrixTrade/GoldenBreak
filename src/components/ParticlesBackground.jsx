@@ -12,12 +12,11 @@ export default function ParticlesBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Track mouse position and status
+    // Track mouse position for a subtle wind drift effect on dust
     const mouse = {
       x: null,
       y: null,
-      active: false,
-      radius: 120 // repulsion field size
+      active: false
     };
 
     const handleResize = () => {
@@ -40,346 +39,127 @@ export default function ParticlesBackground() {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
-    // Billiard / Gaming Ball class
-    class Ball {
-      constructor(x, y, radius, number, isGolden = false) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.number = number;
-        this.isGolden = isGolden;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.mass = radius; // simplify mass as radius
-        // Neon color schemes
-        this.color = isGolden 
-          ? '#e09824' 
-          : (number % 3 === 0 
-              ? '#0ea5e9' // Neon blue
-              : (number % 3 === 1 
-                  ? '#10b981' // Neon green
-                  : '#f43f5e' // Neon pink
-                )
-            );
-        this.glowColor = isGolden ? 'rgba(224, 152, 36, 0.4)' : 'rgba(14, 165, 233, 0.25)';
+    // 1. Slow, Giant Ambient Glow Lights (Light leaks in background)
+    const glowLights = [
+      {
+        x: width * 0.25,
+        y: height * 0.3,
+        radius: Math.max(300, width * 0.3),
+        color: 'rgba(224, 152, 36, 0.04)', // Soft Gold
+        vx: 0.15,
+        vy: 0.1
+      },
+      {
+        x: width * 0.75,
+        y: height * 0.7,
+        radius: Math.max(350, width * 0.35),
+        color: 'rgba(14, 165, 233, 0.035)', // Soft Blue/Cyan
+        vx: -0.1,
+        vy: -0.12
+      },
+      {
+        x: width * 0.5,
+        y: height * 0.5,
+        radius: Math.max(250, width * 0.25),
+        color: 'rgba(168, 85, 247, 0.02)', // Soft Purple accent
+        vx: 0.08,
+        vy: -0.08
       }
+    ];
 
-      update() {
-        // Move
-        this.x += this.vx;
-        this.y += this.vy;
+    // 2. Slow Gold Dust Particles
+    const particles = [];
+    const particleCount = 28; // Small number to prevent clutter and distraction
 
-        // Apply slight drag to keep motion realistic and controlled
-        this.vx *= 0.998;
-        this.vy *= 0.998;
-
-        // Keep velocities from stopping completely
-        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-        if (speed < 0.2) {
-          const angle = Math.random() * Math.PI * 2;
-          this.vx += Math.cos(angle) * 0.1;
-          this.vy += Math.sin(angle) * 0.1;
-        }
-
-        // Mouse interaction (Repulsion / Magnetic cue push)
-        if (mouse.active) {
-          const dx = this.x - mouse.x;
-          const dy = this.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouse.radius) {
-            const force = (mouse.radius - dist) / mouse.radius; // stronger closer
-            const angle = Math.atan2(dy, dx);
-            const pushX = Math.cos(angle) * force * 0.4;
-            const pushY = Math.sin(angle) * force * 0.4;
-            this.vx += pushX;
-            this.vy += pushY;
-          }
-        }
-
-        // Boundary collision with elastic bounce
-        if (this.x - this.radius < 0) {
-          this.x = this.radius;
-          this.vx = -this.vx * 0.9;
-        }
-        if (this.x + this.radius > width) {
-          this.x = width - this.radius;
-          this.vx = -this.vx * 0.9;
-        }
-        if (this.y - this.radius < 0) {
-          this.y = this.radius;
-          this.vy = -this.vy * 0.9;
-        }
-        if (this.y + this.radius > height) {
-          this.y = height - this.radius;
-          this.vy = -this.vy * 0.9;
-        }
-      }
-
-      draw() {
-        ctx.save();
-        // 3D Spherical Radial Gradient
-        const grad = ctx.createRadialGradient(
-          this.x - this.radius * 0.3,
-          this.y - this.radius * 0.3,
-          this.radius * 0.1,
-          this.x,
-          this.y,
-          this.radius
-        );
-        grad.addColorStop(0, '#ffffff'); // bright highlight reflection
-        grad.addColorStop(0.2, this.color);
-        grad.addColorStop(0.8, '#0b0c0f'); // shadow
-        grad.addColorStop(1, '#000000');
-
-        // Neon Glow effect
-        ctx.shadowColor = this.color;
-        ctx.shadowBlur = 15;
-
-        // Draw ball sphere
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Draw inner white label for number
-        ctx.shadowBlur = 0; // reset shadow for text
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius * 0.4, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Draw number text
-        ctx.fillStyle = '#0f172a';
-        ctx.font = `bold ${Math.floor(this.radius * 0.45)}px sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(this.number, this.x, this.y + (this.radius * 0.03));
-        ctx.restore();
-      }
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.8 + 0.5, // Tiny dot size
+        speedY: -(Math.random() * 0.12 + 0.05), // Very slow upward float
+        speedX: (Math.random() - 0.5) * 0.05,
+        alpha: Math.random() * 0.4 + 0.1,
+        baseAlpha: Math.random() * 0.3 + 0.1,
+        fadeSpeed: Math.random() * 0.002 + 0.001,
+        fadeVal: Math.random() * Math.PI
+      });
     }
-
-    // Shockwave Rings from collisions
-    class Shockwave {
-      constructor(x, y, maxRadius, color) {
-        this.x = x;
-        this.y = y;
-        this.radius = 5;
-        this.maxRadius = maxRadius;
-        this.color = color;
-        this.opacity = 1;
-      }
-
-      update() {
-        this.radius += 2.5;
-        this.opacity = 1 - (this.radius / this.maxRadius);
-      }
-
-      draw() {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.strokeStyle = this.color;
-        ctx.globalAlpha = this.opacity;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.restore();
-      }
-    }
-
-    // Sparkle Particles from collisions
-    class Spark {
-      constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.vx = (Math.random() - 0.5) * 3;
-        this.vy = (Math.random() - 0.5) * 3;
-        this.size = Math.random() * 2 + 1;
-        this.color = color;
-        this.opacity = 1;
-        this.decay = Math.random() * 0.02 + 0.015;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.opacity -= this.decay;
-      }
-
-      draw() {
-        if (this.opacity <= 0) return;
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.globalAlpha = this.opacity;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    // Setup entities
-    const balls = [];
-    const shockwaves = [];
-    const sparks = [];
-
-    const ballCount = Math.min(10, Math.floor((width * height) / 90000)) + 4;
-    const baseRadius = width < 768 ? 16 : 24;
-
-    for (let i = 0; i < ballCount; i++) {
-      let x, y, overlap;
-      let attempts = 0;
-      do {
-        x = Math.random() * (width - baseRadius * 2) + baseRadius;
-        y = Math.random() * (height - baseRadius * 2) + baseRadius;
-        overlap = false;
-        // Avoid spawning overlapping balls
-        for (let j = 0; j < balls.length; j++) {
-          const dx = x - balls[j].x;
-          const dy = y - balls[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < (baseRadius + balls[j].radius) + 10) {
-            overlap = true;
-            break;
-          }
-        }
-        attempts++;
-      } while (overlap && attempts < 100);
-
-      const number = i + 1;
-      balls.push(new Ball(x, y, baseRadius, number, number === 8));
-    }
-
-    // Elastic Billiard Ball collision resolution
-    const resolveCollision = (b1, b2) => {
-      const dx = b2.x - b1.x;
-      const dy = b2.y - b1.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < b1.radius + b2.radius) {
-        // Prevent sticking by separating balls first
-        const overlap = (b1.radius + b2.radius) - distance;
-        const nx = dx / distance;
-        const ny = dy / distance;
-        
-        b1.x -= nx * overlap * 0.5;
-        b1.y -= ny * overlap * 0.5;
-        b2.x += nx * overlap * 0.5;
-        b2.y += ny * overlap * 0.5;
-
-        // Vector math for elastic collision
-        const kx = b1.vx - b2.vx;
-        const ky = b1.vy - b2.vy;
-        const p = 2 * (nx * kx + ny * ky) / (b1.mass + b2.mass);
-
-        b1.vx -= p * b2.mass * nx;
-        b1.vy -= p * b2.mass * ny;
-        b2.vx += p * b1.mass * nx;
-        b2.vy += p * b1.mass * ny;
-
-        // Collision center point
-        const cx = b1.x + nx * b1.radius;
-        const cy = b1.y + ny * b1.radius;
-
-        // Trigger effects
-        shockwaves.push(new Shockwave(cx, cy, 60, b1.color));
-        for (let s = 0; s < 6; s++) {
-          sparks.push(new Spark(cx, cy, b2.color));
-        }
-      }
-    };
-
-    // Draw background technology grid nodes
-    const drawTechGrid = () => {
-      ctx.save();
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
-      ctx.lineWidth = 0.5;
-      const gridSize = 120;
-      for (let x = 0; x < width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-      ctx.restore();
-    };
 
     // Animation Loop
     const render = () => {
-      ctx.clearRect(0, 0, width, height);
+      // Clear with very slight transparency to leave a minute, smooth motion trail
+      ctx.fillStyle = '#06080a';
+      ctx.fillRect(0, 0, width, height);
 
-      // Draw background tech grid
-      drawTechGrid();
+      // 1. Draw giant ambient glow leaks
+      glowLights.forEach((light) => {
+        // Move slowly
+        light.x += light.vx;
+        light.y += light.vy;
 
-      // Mouse interactive visual cue ring
-      if (mouse.active) {
-        ctx.save();
-        const radGrad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, mouse.radius);
-        radGrad.addColorStop(0, 'rgba(224, 152, 36, 0.05)');
-        radGrad.addColorStop(1, 'rgba(224, 152, 36, 0)');
-        ctx.fillStyle = radGrad;
+        // Bounce back from boundaries gently
+        if (light.x < -light.radius * 0.2 || light.x > width + light.radius * 0.2) {
+          light.vx = -light.vx;
+        }
+        if (light.y < -light.radius * 0.2 || light.y > height + light.radius * 0.2) {
+          light.vy = -light.vy;
+        }
+
+        // Draw radial gradient light leak
+        const grad = ctx.createRadialGradient(
+          light.x,
+          light.y,
+          0,
+          light.x,
+          light.y,
+          light.radius
+        );
+        grad.addColorStop(0, light.color);
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2);
+        ctx.arc(light.x, light.y, light.radius, 0, Math.PI * 2);
         ctx.fill();
-        ctx.restore();
-      }
+      });
 
-      // Draw network connectors between nearby balls
-      for (let i = 0; i < balls.length; i++) {
-        for (let j = i + 1; j < balls.length; j++) {
-          const dx = balls[i].x - balls[j].x;
-          const dy = balls[i].y - balls[j].y;
+      // 2. Update and Draw Tiny Gold Dust Particles
+      particles.forEach((p) => {
+        // Upward float motion
+        p.y += p.speedY;
+        p.x += p.speedX;
+
+        // Interaction with mouse: drift away slightly from cursor
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 180) {
-            ctx.save();
-            const opacity = (180 - dist) / 180 * 0.15;
-            ctx.strokeStyle = balls[i].color;
-            ctx.globalAlpha = opacity;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(balls[i].x, balls[i].y);
-            ctx.lineTo(balls[j].x, balls[j].y);
-            ctx.stroke();
-            ctx.restore();
+            const force = (180 - dist) / 180;
+            p.x += (dx / dist) * force * 0.3;
+            p.y += (dy / dist) * force * 0.3;
           }
         }
-      }
 
-      // Resolve ball collisions
-      for (let i = 0; i < balls.length; i++) {
-        for (let j = i + 1; j < balls.length; j++) {
-          resolveCollision(balls[i], balls[j]);
+        // Wrap around screen boundaries
+        if (p.y < -5) {
+          p.y = height + 5;
+          p.x = Math.random() * width;
         }
-      }
+        if (p.x < -5) p.x = width + 5;
+        if (p.x > width + 5) p.x = -5;
 
-      // Update & Draw Shockwaves
-      for (let i = shockwaves.length - 1; i >= 0; i--) {
-        shockwaves[i].update();
-        shockwaves[i].draw();
-        if (shockwaves[i].opacity <= 0) {
-          shockwaves.splice(i, 1);
-        }
-      }
+        // Soft shimmer/pulse opacity
+        p.fadeVal += p.fadeSpeed;
+        const shimmerAlpha = p.baseAlpha + Math.sin(p.fadeVal) * 0.08;
 
-      // Update & Draw Sparks
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        sparks[i].update();
-        sparks[i].draw();
-        if (sparks[i].opacity <= 0) {
-          sparks.splice(i, 1);
-        }
-      }
-
-      // Update & Draw Balls
-      balls.forEach((ball) => {
-        ball.update();
-        ball.draw();
+        // Draw tiny golden dust mote
+        ctx.save();
+        ctx.fillStyle = `rgba(224, 152, 36, ${Math.max(0.05, shimmerAlpha)})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       });
 
       animationFrameId = requestAnimationFrame(render);
@@ -399,7 +179,6 @@ export default function ParticlesBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
-      style={{ mixBlendMode: 'screen' }}
     />
   );
 }
