@@ -12,25 +12,25 @@ export default {
           100: '#fef3c7',
           200: '#fde68a',
           300: '#fcd34d',
-          400: '#FFEB3B', // Logo bright yellow
-          500: '#FFE300', // Logo primary yellow
-          600: '#E5CB00', // Logo darker yellow
-          700: '#B8A300',
-          800: '#8A7A00',
-          900: '#5C5200',
-          950: '#2E2900'
+          400: '#f2ae3d', // Light gold/orange
+          500: '#e09824', // Qzone primary gold
+          600: '#bd7c17', // Darker gold
+          700: '#96600d',
+          800: '#754a0a',
+          900: '#543405',
+          950: '#2e1c01'
         },
         gold: {
-          400: '#FFEB3B',
-          500: '#FFE300',
-          600: '#E5CB00',
-          glow: '#FFE300'
+          400: '#f2ae3d',
+          500: '#e09824',
+          600: '#bd7c17',
+          glow: '#e09824'
         },
         dark: {
-          900: '#090A0F',
-          800: '#12141D',
-          700: '#1A1D2B',
-          600: '#262A3E'
+          900: '#080b0e', // Qzone dark body bg
+          800: '#101418', // Qzone secondary bg
+          700: '#13181c', // Qzone custom bg card
+          600: '#1c2227'
         }
       },
       fontFamily: {

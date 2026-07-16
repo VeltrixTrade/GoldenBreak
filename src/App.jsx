@@ -234,25 +234,20 @@ export default function App() {
         {/* VIEW 1: HOME (Hero + Categories Grid / Global Search) */}
         {activeTab === 'home' && (
           <>
-            <Hero
-              onExploreMenu={() => {
-                const element = document.getElementById('categories-section');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
+            <Hero onOpenAdmin={() => setIsAdminOpen(true)} />
 
             {selectedCategory === null ? (
               /* categories list view on home page */
-              <section id="categories-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20">
+              <section id="categories-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 scroll-mt-20">
                 
-                {/* Header & Controls */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 border-b border-white/5 pb-6">
+                {/* Search & Filter Controls */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border-b border-white/5 pb-8">
                   <div>
-                    <h2 className="text-3xl font-black text-white flex items-center gap-3">
-                      <span className="w-3.5 h-8 bg-amber-500 rounded-full inline-block"></span>
-                      <span>أقسام المنيو الفاخرة • Menu Categories</span>
+                    <h2 className="text-2xl sm:text-3xl font-light text-white flex items-center gap-3">
+                      <span className="w-3 h-8 bg-[#e09824] rounded-full inline-block"></span>
+                      <span>أقسام المنيو • Menu Categories</span>
                     </h2>
-                    <p className="text-slate-400 text-sm mt-1.5">اختر القسم الذي تفضله لتصفح أشهى المأكولات والمشروبات والخدمات</p>
+                    <p className="text-slate-400 text-xs sm:text-sm mt-1">تصفح أشهى الأطباق والمشروبات بأقسامنا المتنوعة</p>
                   </div>
 
                   {/* Controls: Global Search + Categories Sorting */}
@@ -265,12 +260,12 @@ export default function App() {
                         placeholder="ابحث عن وجبة أو مشروب... / Search..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-4 pr-10 py-3 rounded-2xl bg-dark-800 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/20 transition-all font-medium"
+                        className="w-full pl-4 pr-10 py-2.5 rounded-xl bg-dark-800 border border-white/5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all font-medium"
                       />
                       {searchQuery && (
                         <button
                           onClick={() => setSearchQuery('')}
-                          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs bg-dark-700 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded-xl transition-all"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-dark-700 hover:bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded transition-all"
                         >
                           مسح
                         </button>
@@ -284,13 +279,13 @@ export default function App() {
                         <select
                           value={categorySortOrder}
                           onChange={(e) => setCategorySortOrder(e.target.value)}
-                          className="w-full pl-8 pr-10 py-3 rounded-2xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/20 transition-all appearance-none font-bold cursor-pointer"
+                          className="w-full pl-8 pr-10 py-2.5 rounded-xl bg-dark-800 border border-white/5 text-white text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all appearance-none font-bold cursor-pointer"
                         >
                           <option value="default">الترتيب الافتراضي • Default</option>
                           <option value="alphabetical">أبجدياً (العربية) • A-Z</option>
                           <option value="items-count">حسب عدد العناصر • Popular</option>
                         </select>
-                        <ChevronDown className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                        <ChevronDown className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
                       </div>
                     )}
                   </div>
@@ -301,12 +296,12 @@ export default function App() {
                   /* Global Search Results */
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-slate-300">
-                        نتائج البحث عن: <span className="text-amber-400 font-black">"{searchQuery}"</span> ({globalSearchResults.length} نتيجة)
+                      <h3 className="text-sm sm:text-base font-bold text-slate-300">
+                        نتائج البحث عن: <span className="text-[#e09824] font-black">"{searchQuery}"</span> ({globalSearchResults.length} نتيجة)
                       </h3>
                       <button
                         onClick={() => setSearchQuery('')}
-                        className="text-xs text-amber-400 hover:underline"
+                        className="text-xs text-[#e09824] hover:underline"
                       >
                         العودة للأقسام
                       </button>
@@ -315,11 +310,11 @@ export default function App() {
                     {globalSearchResults.length === 0 ? (
                       <div className="text-center py-20 bg-dark-800/40 rounded-3xl border border-white/5 space-y-4">
                         <UtensilsCrossed className="w-16 h-16 text-slate-600 mx-auto stroke-1" />
-                        <h3 className="text-xl font-bold text-slate-300">لم يتم العثور على نتائج • No items found</h3>
+                        <h3 className="text-lg font-bold text-slate-300">لم يتم العثور على نتائج • No items found</h3>
                         <p className="text-xs text-slate-500">جرب البحث بكلمات أخرى.</p>
                       </div>
                     ) : (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-8 max-w-6xl mx-auto">
                         {globalSearchResults.map((item) => (
                           <MenuCard
                             key={item.id}
@@ -332,13 +327,38 @@ export default function App() {
                     )}
                   </div>
                 ) : (
-                  /* Categories Card Grid */
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 font-sans">
+                  /* Qzone style categories list mapping */
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 mt-6">
                     {sortedCategories.map((cat) => {
-                      const IconComponent = CATEGORY_ICON_MAP[cat.icon] || Layers;
-                      const itemCount = items.filter((item) => item.category === cat.id).length;
                       const nameAr = cat.nameAr || cat.name || '';
                       const nameEn = cat.nameEn || '';
+
+                      const getCategoryImg = (catId) => {
+                        switch (catId) {
+                          case 'shisha':
+                            return '/category/hookah_1774332374.png';
+                          case 'mojitos':
+                            return '/category/mojito.png';
+                          case 'milkshakes-smoothies':
+                            return '/category/milkshake.png';
+                          case 'crepes':
+                          case 'sweets-snacks':
+                            return '/category/desserts.png';
+                          case 'cocktails-juices':
+                            return '/category/organic_juice.png';
+                          case 'hot-drinks':
+                            return '/category/hot_drinks.png';
+                          case 'mexican-energy':
+                          case 'energy-drinks':
+                            return '/category/redbull.png';
+                          case 'soft-drinks':
+                            return '/category/cold_drinks.png';
+                          case 'fast-food':
+                            return '/category/food.png';
+                          default:
+                            return '/category/food.png';
+                        }
+                      };
 
                       return (
                         <div
@@ -347,30 +367,18 @@ export default function App() {
                             setSelectedCategory(cat.id);
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
-                          className="group bg-dark-800/80 border border-white/5 hover:border-amber-500/40 hover:shadow-2xl hover:shadow-amber-500/5 rounded-2xl sm:rounded-3xl p-4 sm:p-6 transition-all duration-300 flex flex-col justify-between h-40 sm:h-48 cursor-pointer transform hover:-translate-y-1"
+                          className="group cursor-pointer flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-2"
                         >
-                          <div className="flex items-center justify-between">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all duration-300 animate-transition">
-                              <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
-                            </div>
-                            <span className="text-[9px] sm:text-[11px] font-extrabold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/5 text-slate-400 group-hover:bg-amber-500/10 group-hover:text-amber-400 transition-colors">
-                              {itemCount} {itemCount >= 11 ? 'عنصر' : 'عناصر'}
-                            </span>
+                          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center rounded-full overflow-hidden transition-all duration-300">
+                            <img 
+                              src={getCategoryImg(cat.id)} 
+                              alt={nameEn} 
+                              className="w-full h-full object-contain group-hover:scale-115 transition-transform duration-500"
+                            />
                           </div>
-                          <div className="mt-2 sm:mt-4">
-                            <h3 className="text-base sm:text-xl font-black text-white group-hover:text-amber-400 transition-colors truncate">
-                              {nameAr}
-                            </h3>
-                            {nameEn && (
-                              <p className="text-[10px] sm:text-xs text-slate-400 font-mono font-medium mt-0.5 opacity-80 truncate">
-                                {nameEn}
-                              </p>
-                            )}
-                          </div>
-                          <div className="flex items-center justify-end text-[10px] sm:text-xs text-amber-400/70 group-hover:text-amber-400 font-bold gap-1 mt-1 sm:mt-2">
-                            <span>عرض القسم</span>
-                            <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-1 transition-transform" />
-                          </div>
+                          <span className="font-sans text-base sm:text-lg md:text-xl font-normal text-white uppercase tracking-wider text-center mt-3 group-hover:text-[#e09824] transition-colors">
+                            {nameEn || nameAr}
+                          </span>
                         </div>
                       );
                     })}
@@ -378,47 +386,51 @@ export default function App() {
                 )}
               </section>
             ) : (
-              /* Specific Category Detail Page */
-              <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
-                {/* Back Button */}
-                <div className="mb-6">
-                  <button
-                    onClick={() => {
-                      setSelectedCategory(null);
-                      setSearchQuery('');
-                    }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-dark-800 hover:bg-dark-700 text-slate-300 border border-white/10 hover:border-amber-500/40 hover:text-white transition-all font-bold text-sm"
-                  >
-                    <ArrowLeft className="w-4 h-4 rotate-180" />
-                    <span>العودة للأقسام الرئيسية • Back to Categories</span>
-                  </button>
+              /* Specific Category Detail Page styled like QZONE */
+              <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
+                
+                {/* QZONE style back button peeking from left edge */}
+                <a
+                  href="javascript:void(0);"
+                  id="backbtn1"
+                  onClick={() => {
+                    setSelectedCategory(null);
+                    setSearchQuery('');
+                  }}
+                  title="العودة للأقسام"
+                >
+                  <img 
+                    src="/arrow.png" 
+                    style={{ width: '39px', transform: 'rotate(180deg)', marginRight: '-14px' }} 
+                    alt="Back"
+                  />
+                </a>
+
+                {/* Spinning top about image */}
+                <div className="flex justify-center mb-6">
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center rounded-full overflow-hidden bg-dark-900/35 border border-white/5">
+                    <img 
+                      src="/about.png" 
+                      alt="about decorator" 
+                      className="w-[85%] h-[85%] object-contain opacity-20 animate-[spin_40s_linear_infinite]"
+                    />
+                  </div>
                 </div>
 
                 {/* Category Header */}
                 {(() => {
                   const catObj = categories.find((c) => c.id === selectedCategory);
-                  const IconComponent = catObj ? (CATEGORY_ICON_MAP[catObj.icon] || Layers) : Layers;
                   return catObj ? (
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 bg-gradient-to-r from-amber-500/10 via-dark-800 to-dark-800 border border-white/5 rounded-3xl p-6 sm:p-8">
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-2xl bg-amber-500 flex items-center justify-center text-black shadow-lg shadow-amber-500/20">
-                          <IconComponent className="w-8 h-8 stroke-[2.5]" />
-                        </div>
-                        <div>
-                          <h2 className="text-2xl sm:text-3xl font-black text-white">
-                            {catObj.nameAr}
-                          </h2>
-                          {catObj.nameEn && (
-                            <p className="text-sm text-amber-400 font-mono font-bold mt-0.5 uppercase tracking-wide">
-                              {catObj.nameEn}
-                            </p>
-                          )}
-                        </div>
-                      </div>
+                    <div className="text-center mb-10 max-w-2xl mx-auto">
+                      <span className="text-[#e09824] font-serif italic text-lg block mb-1">Delicious</span>
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-slate-300 uppercase tracking-widest">
+                        {catObj.nameEn || catObj.nameAr}
+                      </h2>
+                      <hr className="border-t border-[#e09824] my-6 max-w-xs mx-auto opacity-70" />
 
-                      {/* Controls: Search inside Category + Sort Category Items */}
-                      <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
-                        {/* Search in Category */}
+                      {/* Controls inside category detail page */}
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+                        {/* Search inside category */}
                         <div className="relative w-full sm:w-60">
                           <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                           <input
@@ -426,7 +438,7 @@ export default function App() {
                             placeholder="ابحث في هذا القسم... / Search..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-4 pr-9 py-2.5 rounded-xl bg-dark-900 border border-white/10 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/20 transition-all font-medium"
+                            className="w-full pl-4 pr-9 py-2 rounded-xl bg-dark-800 border border-white/5 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all font-medium"
                           />
                           {searchQuery && (
                             <button
@@ -438,13 +450,13 @@ export default function App() {
                           )}
                         </div>
 
-                        {/* Items Sort Dropdown */}
+                        {/* Items sort dropdown */}
                         <div className="relative w-full sm:w-52 font-bold">
                           <SlidersHorizontal className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                           <select
                             value={itemSortOrder}
                             onChange={(e) => setItemSortOrder(e.target.value)}
-                            className="w-full pl-8 pr-9 py-2.5 rounded-xl bg-dark-900 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/20 transition-all appearance-none cursor-pointer"
+                            className="w-full pl-8 pr-9 py-2 rounded-xl bg-dark-800 border border-white/5 text-white text-xs focus:outline-none focus:border-[#e09824]/60 focus:ring-1 focus:ring-[#e09824]/20 transition-all appearance-none cursor-pointer"
                           >
                             <option value="default">الترتيب الافتراضي • Default</option>
                             <option value="price-low">السعر: من الأقل للأعلى • Price Low</option>
@@ -459,17 +471,17 @@ export default function App() {
                   ) : null;
                 })()}
 
-                {/* Items Grid */}
+                {/* Items Grid (Qzone style 2-columns) */}
                 {categoryItems.length === 0 ? (
                   <div className="text-center py-20 bg-dark-800/40 rounded-3xl border border-white/5 space-y-4">
                     <UtensilsCrossed className="w-16 h-16 text-slate-600 mx-auto stroke-1" />
-                    <h3 className="text-xl font-bold text-slate-300">لم يتم العثور على أطباق • No items found</h3>
+                    <h3 className="text-lg font-bold text-slate-300">لم يتم العثور على أطباق • No items found</h3>
                     <p className="text-xs text-slate-500">
                       هذا القسم فارغ حالياً أو لم يتم العثور على نتائج بحث مطابقة.
                     </p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-fadeIn">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-8 max-w-6xl mx-auto animate-fadeIn">
                     {categoryItems.map((item) => (
                       <MenuCard
                         key={item.id}
@@ -540,100 +552,57 @@ export default function App() {
         </a>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-dark-900 border-t border-white/10 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-slate-400 text-sm">
+      {/* QZONE Style Copyright Footer */}
+      <footer id="pq-footer" className="bg-dark-900/60 border-t border-white/5 py-10 mt-12 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           
-          {/* Brand */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <img 
-                src="/logo.png" 
-                alt="GOLDENBREAK Logo" 
-                className="w-11 h-11 rounded-full object-cover border border-amber-500/20 bg-black shadow-md shadow-amber-500/5"
-              />
-              <span className="text-2xl font-black gold-text-gradient font-mono">GOLDENBREAK</span>
-            </div>
-            <p className="text-xs leading-relaxed max-w-sm">
-              مطعم وصالة بلياردو وسنوكر فاخرة. نضمن لك تجربة ترفيهية وطعام طازج بأعلى المستويات.
-            </p>
-            <div className="pt-1">
-              <a
-                href="https://instagram.com/goldenbreak.dhk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs text-amber-400 font-bold hover:underline"
-              >
-                <Instagram className="w-4 h-4" />
-                <span>@goldenbreak.dhk</span>
-              </a>
-            </div>
+          {/* Social Icons */}
+          <div className="flex items-center justify-center gap-3">
+            <a 
+              href="https://instagram.com/goldenbreak.dhk" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-white/10 hover:border-[#e09824] flex items-center justify-center text-slate-300 hover:text-[#e09824] transition-all bg-dark-800/40"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://wa.me/9647504596543" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-white/10 hover:border-[#e09824] flex items-center justify-center text-slate-300 hover:text-[#e09824] transition-all bg-dark-800/40"
+            >
+              <MessageCircle className="w-5 h-5 fill-current" />
+            </a>
           </div>
 
-          {/* Contact & Hours */}
-          <div className="space-y-2.5">
-            <h4 className="text-white font-bold text-base mb-3">أوقات العمل والمعلومات • Info</h4>
-            <div className="flex items-center gap-2 text-xs">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span>مفتوح يومياً: من 10:00 صباحاً حتى 02:00 ليلاً</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-mono">
-              <Phone className="w-4 h-4 text-amber-400" />
-              <span>الخط الرئيسي: 0750 459 6543</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-mono">
-              <Phone className="w-4 h-4 text-amber-400" />
-              <span>الخط الثاني: 0751 531 5442</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs">
-              <MapPin className="w-4 h-4 text-amber-400" />
-              <span>الموقع: الشارع الرئيسي، صالة جولدن بريك VIP</span>
-            </div>
+          {/* Address */}
+          <span className="block text-slate-400 text-base md:text-lg font-light tracking-wide pt-2">
+            Main Street, VIP Golden Break Lounge, Duhok
+          </span>
+
+          {/* Phone Numbers */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 pt-1">
+            <a 
+              href="tel:07504596543" 
+              className="text-[#e09824] hover:text-[#f2ae3d] text-2xl font-bold font-mono transition-colors"
+            >
+              0750 459 6543
+            </a>
+            <span className="hidden sm:inline text-white/20">|</span>
+            <a 
+              href="tel:07515315442" 
+              className="text-[#e09824] hover:text-[#f2ae3d] text-2xl font-bold font-mono transition-colors"
+            >
+              0751 531 5442
+            </a>
           </div>
 
-          {/* Direct WhatsApp Action Buttons */}
-          <div className="space-y-3">
-            <h4 className="text-white font-bold text-base">الحجز والطلب المباشر • WhatsApp</h4>
-            <p className="text-xs leading-relaxed">
-              تواصل معنا مباشرة عبر أرقام الواتساب المعتمدة للإدارة:
-            </p>
-            <div className="flex flex-col gap-2">
-              <a
-                href="https://wa.me/9647504596543"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs transition-all shadow-lg shadow-emerald-500/20"
-              >
-                <div className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4 fill-black" />
-                  <span>خط الواتساب 1</span>
-                </div>
-                <span className="font-mono">0750 459 6543</span>
-              </a>
+          {/* Design Attribution */}
+          <span className="block text-slate-600 text-[11px] pt-4 font-mono">
+            Designed by Antigravity / VeltrixTrade. © 2026 GOLDENBREAK. All rights reserved.
+          </span>
 
-              <a
-                href="https://wa.me/9647515315442"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-dark-700 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 font-extrabold text-xs transition-all"
-              >
-                <div className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4" />
-                  <span>خط الواتساب 2</span>
-                </div>
-                <span className="font-mono">0751 531 5442</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
-          <p>© 2026 GOLDENBREAK Lounge & Restaurant (@goldenbreak.dhk). All rights reserved.</p>
-          <div className="flex items-center gap-1">
-            <span>صنع بـ</span>
-            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
-          </div>
         </div>
       </footer>
 
