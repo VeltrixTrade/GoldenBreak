@@ -119,17 +119,17 @@ export default function AdminModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="bg-dark-800 border border-amber-500/30 rounded-3xl max-w-3xl w-full p-6 sm:p-8 text-white shadow-2xl relative my-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md">
+      <div className="bg-dark-800 border border-amber-500/30 rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col text-white shadow-2xl relative overflow-hidden">
         
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
+        <div className="flex items-center justify-between border-b border-white/10 p-6 sm:p-8 pb-5 flex-shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
               <ShieldCheck className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div>
-              <h2 className="text-2xl font-black flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black flex items-center gap-2">
                 لوحة إدراج الوجبات والأقسام
                 <span className="bg-amber-500 text-black text-[10px] px-2.5 py-0.5 rounded-full font-extrabold">ADMIN</span>
               </h2>
@@ -139,11 +139,14 @@ export default function AdminModal({
 
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-xl bg-dark-700 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-all"
+            className="w-10 h-10 rounded-xl bg-dark-700 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-all flex-shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Scrollable Body */}
+        <div className="flex-1 overflow-y-auto p-6 sm:p-8 pt-4">
 
         {/* Authentication Form if not logged in */}
         {!authenticated ? (
@@ -636,6 +639,7 @@ export default function AdminModal({
 
           </div>
         )}
+        </div>
 
       </div>
     </div>
