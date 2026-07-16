@@ -5,25 +5,9 @@
 @layer base {
   body {
     @apply text-slate-100 font-sans min-h-screen relative;
-    background-color: #101418 !important;
+    background: radial-gradient(circle at 50% 50%, #0d1117 0%, #05070a 100%) !important;
     user-select: none;
     -webkit-user-select: none;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/header1.jpg') !important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.5;
-    z-index: -1;
-    pointer-events: none;
   }
 }
 
