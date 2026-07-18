@@ -30,12 +30,12 @@ const CATEGORY_ICON_MAP = {
 export default function App() {
   // Load initial state from LocalStorage or fall back to defaults
   const [categories, setCategories] = useState(() => {
-    const saved = localStorage.getItem('gb_categories_v4');
+    const saved = localStorage.getItem('gb_categories_v5');
     return saved ? JSON.parse(saved) : DEFAULT_CATEGORIES;
   });
 
   const [items, setItems] = useState(() => {
-    const saved = localStorage.getItem('gb_items_v4');
+    const saved = localStorage.getItem('gb_items_v5');
     return saved ? JSON.parse(saved) : DEFAULT_ITEMS;
   });
 
@@ -72,11 +72,11 @@ export default function App() {
 
   // Save to LocalStorage whenever categories or items change
   useEffect(() => {
-    localStorage.setItem('gb_categories_v4', JSON.stringify(categories));
+    localStorage.setItem('gb_categories_v5', JSON.stringify(categories));
   }, [categories]);
 
   useEffect(() => {
-    localStorage.setItem('gb_items_v4', JSON.stringify(items));
+    localStorage.setItem('gb_items_v5', JSON.stringify(items));
   }, [items]);
 
   // Cart Functions
@@ -147,6 +147,8 @@ export default function App() {
     localStorage.removeItem('gb_items_v3');
     localStorage.removeItem('gb_categories_v4');
     localStorage.removeItem('gb_items_v4');
+    localStorage.removeItem('gb_categories_v5');
+    localStorage.removeItem('gb_items_v5');
   };
 
   // Sort and filter categories for home page
