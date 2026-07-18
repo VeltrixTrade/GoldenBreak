@@ -31,12 +31,38 @@ export default function App() {
   // Load initial state from LocalStorage or fall back to defaults
   const [categories, setCategories] = useState(() => {
     const saved = localStorage.getItem('gb_categories_v5');
-    return saved ? JSON.parse(saved) : DEFAULT_CATEGORIES;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        const hasOldFormat = parsed.some(c => c.id === 'billiards' && (!c.image || !c.image.endsWith('.jpg')));
+        if (hasOldFormat) {
+          localStorage.removeItem('gb_categories_v5');
+          return DEFAULT_CATEGORIES;
+        }
+        return parsed;
+      } catch (e) {
+        return DEFAULT_CATEGORIES;
+      }
+    }
+    return DEFAULT_CATEGORIES;
   });
 
   const [items, setItems] = useState(() => {
     const saved = localStorage.getItem('gb_items_v5');
-    return saved ? JSON.parse(saved) : DEFAULT_ITEMS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        const hasOldFormat = parsed.some(i => i.id === 'ff-3' && (!i.image || !i.image.endsWith('.jpg')));
+        if (hasOldFormat) {
+          localStorage.removeItem('gb_items_v5');
+          return DEFAULT_ITEMS;
+        }
+        return parsed;
+      } catch (e) {
+        return DEFAULT_ITEMS;
+      }
+    }
+    return DEFAULT_ITEMS;
   });
 
   const [cart, setCart] = useState([]);
