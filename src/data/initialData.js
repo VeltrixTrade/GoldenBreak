@@ -83,7 +83,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "أرز الريزو الشهي بصلصة الباربيكيو والقطع المقرمشة.",
     "descriptionEn": "Signature Rizo rice bowl topped with crispy chicken.",
     "popular": true,
-    "image": "/category/fast_food.jpg"
+    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop"
   },
   {
     "id": "ff-6",
@@ -139,7 +139,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "طبق بطاطس مقلية ذهبية مقرمشة.",
     "descriptionEn": "Crispy golden French fries plate.",
     "popular": false,
-    "image": "/category/fast_food.jpg"
+    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-1",
@@ -153,7 +153,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك جولدن بريك المتميز والشهي.",
     "descriptionEn": "Signature Golden Break ice cream milkshake mix.",
     "popular": true,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-2",
@@ -167,7 +167,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "سموزي جولدن بريك الخاص والمنعش.",
     "descriptionEn": "Special blended tropical fruit ice smoothie.",
     "popular": true,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-3",
@@ -181,7 +181,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك الفانيلا الأصلي بارد ومنعش.",
     "descriptionEn": "Classic creamy vanilla bean milkshake.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-4",
@@ -195,7 +195,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك مع زبدة ومطحون بسكويت اللوتس.",
     "descriptionEn": "Rich Biscoff Lotus butter and cookie milkshake.",
     "popular": true,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-5",
@@ -209,7 +209,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك زبدة الفستق الحلبي البستاشيو.",
     "descriptionEn": "Premium Sicilian pistachio cream milkshake.",
     "popular": true,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-6",
@@ -223,7 +223,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك بسكويت الأوريو مع الشوكولاتة.",
     "descriptionEn": "Crushed Oreo cookies and chocolate ice cream milkshake.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-7",
@@ -237,7 +237,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ميلك شيك شوكولاتة النوتيلا الغنية.",
     "descriptionEn": "Creamy Nutella hazelnut chocolate milkshake.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-8",
@@ -251,7 +251,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "سموزي الفراولة البارد الطبيعي.",
     "descriptionEn": "Fresh blended ice strawberry smoothie.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-9",
@@ -265,7 +265,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "سموزي التفاح الأخضر المنعش.",
     "descriptionEn": "Refreshing green apple blended fruit smoothie.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-10",
@@ -279,7 +279,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "سموزي الأناناس الاستوائي البارد.",
     "descriptionEn": "Chilled tropical pineapple fruit smoothie.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "ms-11",
@@ -293,7 +293,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "سموزي البرتقال الطبيعي المنعش.",
     "descriptionEn": "Zesty icy fresh orange fruit smoothie.",
     "popular": false,
-    "image": "/category/milkshakes.jpg"
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop"
   },
   {
     "id": "mj-1",
@@ -321,7 +321,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "موهيتو الفراولة البارد مع النعناع والليمون.",
     "descriptionEn": "Fresh strawberry mojito with crushed ice and mint.",
     "popular": false,
-    "image": "/category/mojitos.jpg"
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop"
   },
   {
     "id": "mj-3",
@@ -335,7 +335,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "موهيتو التفاح المنعش بالليمون والنعناع.",
     "descriptionEn": "Crisp green apple fizzy mint mojito.",
     "popular": false,
-    "image": "/category/mojitos.jpg"
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop"
   },
   {
     "id": "mj-4",
@@ -349,7 +349,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "موهيتو التوت الأزرق بلوبيري اللذيذ.",
     "descriptionEn": "Wild blueberry mint mojito with soda.",
     "popular": true,
-    "image": "/category/mojitos.jpg"
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop"
   },
   {
     "id": "mj-5",
@@ -363,7 +363,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "موهيتو الأناناس البارد.",
     "descriptionEn": "Refreshing pineapple & lime soda mojito.",
     "popular": false,
-    "image": "/category/mojitos.jpg"
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-1",
@@ -377,7 +377,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "رول كريب محشو بالشوكولاتة.",
     "descriptionEn": "Warm rolled crepe filled with rich chocolate.",
     "popular": true,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-2",
@@ -391,7 +391,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب شرائح الفوتوشيني مع الصوص والآيس كريم.",
     "descriptionEn": "Fettuccine-style sliced crepe topped with chocolate & ice cream.",
     "popular": true,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-3",
@@ -405,7 +405,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "طبقات البانكيك الهشة المغطاة بالشوكولاتة.",
     "descriptionEn": "Fluffy pancake stack drizzled with honey & chocolate.",
     "popular": true,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-4",
@@ -419,7 +419,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب جولدن بريك الخاص بتشكيلة الصوصات.",
     "descriptionEn": "Golden Break special mix sauce crepe.",
     "popular": true,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-5",
@@ -433,7 +433,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب بصلصة الكيندر الشهية.",
     "descriptionEn": "Fresh crepe drizzled with melted Kinder cream.",
     "popular": false,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-6",
@@ -447,7 +447,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب بشوكولاتة النوتيلا الغنية.",
     "descriptionEn": "Classic French crepe spread with Nutella.",
     "popular": false,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-7",
@@ -461,7 +461,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب بصلصة وبسكويت اللوتس.",
     "descriptionEn": "Crepe covered with Lotus Biscoff spread and crumbs.",
     "popular": false,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cr-8",
@@ -475,7 +475,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كريب بصلصة الفستق الحلبي البستاشيو.",
     "descriptionEn": "Crepe topped with rich pistachio cream.",
     "popular": false,
-    "image": "/category/crepes.jpg"
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-1",
@@ -489,7 +489,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوكتيل فواكه طبقات جولدن بريك المميز.",
     "descriptionEn": "Signature multi-layered fresh tropical fruit blend.",
     "popular": true,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-2",
@@ -503,7 +503,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوكتيل فواكه طازجة مشكلة.",
     "descriptionEn": "Blended seasonal fresh fruit juice cocktail.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-3",
@@ -517,7 +517,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوكتيل الحمضيات المنعش البارد.",
     "descriptionEn": "Tangy blend of orange, lemon, and grapefruit.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-4",
@@ -531,7 +531,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوكتيل فواكه حلوة ولذيذة.",
     "descriptionEn": "Sweet berry and banana fresh cocktail.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-5",
@@ -545,7 +545,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عصير الليمون والنعناع المعصور طازجاً.",
     "descriptionEn": "Freshly squeezed lemon juice with mint leaves.",
     "popular": true,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-6",
@@ -559,7 +559,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عصير برتقال فريش 100%.",
     "descriptionEn": "100% pure freshly squeezed orange juice.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-7",
@@ -573,7 +573,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عصير طازج من الموز والبرتقال الطبيعي.",
     "descriptionEn": "Smooth blend of fresh banana and orange juice.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-8",
@@ -587,7 +587,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عصير ليمون طبيعي مثلج.",
     "descriptionEn": "Squeezed icy lemon juice.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "cj-9",
@@ -601,7 +601,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عصير طازج يجمع بين الليمون والبرتقال.",
     "descriptionEn": "Refreshing mix of fresh lemon and orange.",
     "popular": false,
-    "image": "/category/juices.jpg"
+    "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-1",
@@ -629,7 +629,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "جرعتان من قهوة الإسبريسو المركز.",
     "descriptionEn": "Double shot of concentrated artisanal espresso.",
     "popular": false,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1510972527409-cef6e4a4d6f2?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-3",
@@ -643,7 +643,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "قهوة أمريكانو ساخنة.",
     "descriptionEn": "Hot espresso diluted with steaming water.",
     "popular": false,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-4",
@@ -671,7 +671,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "شاي عراقي مهيل بالحليب الساخن.",
     "descriptionEn": "Brewed cardamom tea mixed with hot milk.",
     "popular": false,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-6",
@@ -685,7 +685,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "قهوة تركية بالهيل محبوكة.",
     "descriptionEn": "Authentic brewed Turkish coffee with cardamom.",
     "popular": true,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1580974511812-4b719705f83b?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-7",
@@ -699,7 +699,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "جرعة إسبريسو غنية.",
     "descriptionEn": "Single espresso shot.",
     "popular": false,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1510972527409-cef6e4a4d6f2?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-8",
@@ -713,7 +713,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوب حليب ساخن طازج.",
     "descriptionEn": "Steamed fresh hot milk.",
     "popular": false,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&auto=format&fit=crop"
   },
   {
     "id": "hd-9",
@@ -727,7 +727,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "استكان شاي عراقي مهيل مخدر.",
     "descriptionEn": "Traditional Iraqi cardamom black tea.",
     "popular": true,
-    "image": "/category/hot_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-1",
@@ -741,7 +741,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مكسيكي ريدبول جولدن بريك الخاص بالشرائح والثلج.",
     "descriptionEn": "Special Golden Break mixed RedBull energy cocktail.",
     "popular": true,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-2",
@@ -755,7 +755,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مشروب ريدبول المكسيكي المنعش.",
     "descriptionEn": "Classic chilled RedBull flavor mix.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-3",
@@ -769,7 +769,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مكسيكي ريدبول بلوبيري.",
     "descriptionEn": "Blueberry flavored RedBull energizer.",
     "popular": true,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-4",
@@ -783,7 +783,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مكسيكي تايكر المنعش.",
     "descriptionEn": "Chilled Tiger energy drink mix.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-5",
@@ -797,7 +797,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "تايكر مكسيكي بنكهة التوت الأزرق.",
     "descriptionEn": "Blueberry Tiger drink over crushed ice.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-6",
@@ -811,7 +811,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "خلطة التايكر جولدن الخاصة.",
     "descriptionEn": "House special Golden Tiger mix.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-7",
@@ -825,7 +825,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "وايت تايكر مكسيكي بارد.",
     "descriptionEn": "White Tiger chilled energy drink mix.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-8",
@@ -839,7 +839,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "وايت تايكر مكسيكي بلوبيري.",
     "descriptionEn": "Blueberry White Tiger refresher.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "mex-9",
@@ -853,7 +853,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "خلطة وايت تايكر جولدن المميزة.",
     "descriptionEn": "Signature Golden White Tiger energy cocktail.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-1",
@@ -867,7 +867,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "علبة ريدبول باردة 3,000 د.ع.",
     "descriptionEn": "Cold Red Bull energy drink 250ml.",
     "popular": true,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-2",
@@ -881,7 +881,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "وايت تايكر 2,000 د.ع.",
     "descriptionEn": "Cold White Tiger energy drink.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-3",
@@ -895,7 +895,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مشروب أكشن للطاقة 2,000 د.ع.",
     "descriptionEn": "Fizzy Action energy drink.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-4",
@@ -909,7 +909,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مشروب بلنك 2,000 د.ع.",
     "descriptionEn": "Blink energy drink.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-5",
@@ -923,7 +923,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "وايت تايكر دايت 2,000 د.ع.",
     "descriptionEn": "Zero sugar White Tiger energy drink.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "ed-6",
@@ -937,7 +937,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "علبة تايكر 1,500 د.ع.",
     "descriptionEn": "Original Tiger energy drink.",
     "popular": false,
-    "image": "/category/mexican_energy.jpg"
+    "image": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-1",
@@ -951,7 +951,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "علبة بيبسي باردة 1,000 د.ع.",
     "descriptionEn": "Cold Pepsi soda can.",
     "popular": true,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-2",
@@ -965,7 +965,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "علبة ميرندا 1,000 د.ع.",
     "descriptionEn": "Mirinda orange soda can.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-3",
@@ -979,7 +979,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "علبة سبرايت 1,000 د.ع.",
     "descriptionEn": "Chilled lemon-lime Sprite soda.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-4",
@@ -993,7 +993,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "أكمينه غازي 1,000 د.ع.",
     "descriptionEn": "Acmena sparkling soft drink.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-5",
@@ -1007,7 +1007,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "صودة صادة 1,000 د.ع.",
     "descriptionEn": "Pure club soda over ice.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1608885898957-a599fb1863fc?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-6",
@@ -1021,7 +1021,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "بيبسي دايت 1,000 د.ع.",
     "descriptionEn": "Zero calorie Diet Pepsi.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=500&auto=format&fit=crop"
   },
   {
     "id": "sd-7",
@@ -1035,7 +1035,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "مانتن ديو 1,000 د.ع.",
     "descriptionEn": "Chilled Mountain Dew citrus soda.",
     "popular": false,
-    "image": "/category/soft_drinks.jpg"
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-1",
@@ -1049,7 +1049,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كيندر شوكولاتة بيضاء 2,000 د.ع.",
     "descriptionEn": "White Kinder chocolate bar.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1549007994-cb92ca817bc7?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-2",
@@ -1063,7 +1063,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كيندر شوكولاتة 2,000 د.ع.",
     "descriptionEn": "Classic milk Kinder chocolate bar.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1549007994-cb92ca817bc7?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-3",
@@ -1077,7 +1077,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "طبق إندومي ساخن 2,000 د.ع.",
     "descriptionEn": "Hot seasoned Indomie noodle bowl.",
     "popular": true,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-4",
@@ -1091,7 +1091,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "جبس برانكوس مقرمش 2,000 د.ع.",
     "descriptionEn": "Crispy Prancos potato chips bag.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-5",
@@ -1105,7 +1105,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "بسكويت ميلتو 1,000 د.ع.",
     "descriptionEn": "Melto chocolate biscuit bar.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1549007994-cb92ca817bc7?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-6",
@@ -1119,7 +1119,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ماكمه كراميل 1,000 د.ع.",
     "descriptionEn": "Macma chewy caramel candy bar.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1549007994-cb92ca817bc7?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-7",
@@ -1133,7 +1133,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ماكمه شوكولاتة 1,000 د.ع.",
     "descriptionEn": "Macma chocolate treat.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1549007994-cb92ca817bc7?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-8",
@@ -1147,7 +1147,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "عبوة مياه معدنية 500 دينار.",
     "descriptionEn": "Chilled pure mineral water bottle.",
     "popular": false,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1608885898957-a599fb1863fc?w=500&auto=format&fit=crop"
   },
   {
     "id": "sw-9",
@@ -1161,7 +1161,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "كوب ثلج مع شرائح الليمون 500 دينار.",
     "descriptionEn": "Glass of crushed ice served with fresh lemon slices.",
     "popular": true,
-    "image": "/category/sweets.jpg"
+    "image": "https://images.unsplash.com/photo-1608885898957-a599fb1863fc?w=500&auto=format&fit=crop"
   },
   {
     "id": "sh-1",
@@ -1175,7 +1175,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "نركيلة إنجليزي احترافية 8,000 د.ع.",
     "descriptionEn": "Premium English shisha with smooth draw & coconut coals.",
     "popular": true,
-    "image": "/category/hookah.jpg"
+    "image": "https://images.unsplash.com/photo-1527156278759-ec9ec59b1523?w=500&auto=format&fit=crop"
   },
   {
     "id": "sh-2",
@@ -1189,7 +1189,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "نركيلة علك نعناع 8,000 د.ع.",
     "descriptionEn": "Cool gum and mint flavored hookah.",
     "popular": true,
-    "image": "/category/hookah.jpg"
+    "image": "https://images.unsplash.com/photo-1527156278759-ec9ec59b1523?w=500&auto=format&fit=crop"
   },
   {
     "id": "sh-3",
@@ -1203,7 +1203,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "نركيلة ليمون نعناع 8,000 د.ع.",
     "descriptionEn": "Zesty lemon mint flavored hookah.",
     "popular": true,
-    "image": "/category/hookah.jpg"
+    "image": "https://images.unsplash.com/photo-1527156278759-ec9ec59b1523?w=500&auto=format&fit=crop"
   },
   {
     "id": "item-5",
@@ -1217,7 +1217,7 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "ساعة لعب كاملة على طاولات Mr-Sung الاحترافية في أجواء هادئة وراقية.",
     "descriptionEn": "1-hour game session on Mr-Sung professional pool table.",
     "popular": true,
-    "image": "/category/billiards.jpg"
+    "image": "https://images.unsplash.com/photo-1527156278759-ec9ec59b1523?w=500&auto=format&fit=crop"
   },
   {
     "id": "item-6",
@@ -1231,6 +1231,6 @@ export const DEFAULT_ITEMS = [
     "descriptionAr": "طاولة سنوكر فاخرة بقمشات هولندية وكريات احترافية مع خدمة ضيافة متميزة.",
     "descriptionEn": "1-hour game session on tournament-grade snooker table.",
     "popular": false,
-    "image": "/category/billiards.jpg"
+    "image": "https://images.unsplash.com/photo-1527156278759-ec9ec59b1523?w=500&auto=format&fit=crop"
   }
 ];
