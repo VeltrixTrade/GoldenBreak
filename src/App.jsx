@@ -30,12 +30,12 @@ const CATEGORY_ICON_MAP = {
 export default function App() {
   // Load initial state from LocalStorage or fall back to defaults
   const [categories, setCategories] = useState(() => {
-    const saved = localStorage.getItem('gb_categories_v3');
+    const saved = localStorage.getItem('gb_categories_v4');
     return saved ? JSON.parse(saved) : DEFAULT_CATEGORIES;
   });
 
   const [items, setItems] = useState(() => {
-    const saved = localStorage.getItem('gb_items_v3');
+    const saved = localStorage.getItem('gb_items_v4');
     return saved ? JSON.parse(saved) : DEFAULT_ITEMS;
   });
 
@@ -72,11 +72,11 @@ export default function App() {
 
   // Save to LocalStorage whenever categories or items change
   useEffect(() => {
-    localStorage.setItem('gb_categories_v3', JSON.stringify(categories));
+    localStorage.setItem('gb_categories_v4', JSON.stringify(categories));
   }, [categories]);
 
   useEffect(() => {
-    localStorage.setItem('gb_items_v3', JSON.stringify(items));
+    localStorage.setItem('gb_items_v4', JSON.stringify(items));
   }, [items]);
 
   // Cart Functions
@@ -145,6 +145,8 @@ export default function App() {
     localStorage.removeItem('gb_items_v2');
     localStorage.removeItem('gb_categories_v3');
     localStorage.removeItem('gb_items_v3');
+    localStorage.removeItem('gb_categories_v4');
+    localStorage.removeItem('gb_items_v4');
   };
 
   // Sort and filter categories for home page
@@ -349,27 +351,30 @@ export default function App() {
                       const getCategoryImg = (catId) => {
                         switch (catId) {
                           case 'shisha':
-                            return '/category/hookah_1774332374.png';
+                            return '/category/hookah.jpg';
                           case 'mojitos':
-                            return '/category/mojito.png';
+                            return '/category/mojitos.jpg';
                           case 'milkshakes-smoothies':
-                            return '/category/milkshake.png';
+                            return '/category/milkshakes.jpg';
                           case 'crepes':
+                            return '/category/crepes.jpg';
                           case 'sweets-snacks':
-                            return '/category/desserts.png';
+                            return '/category/sweets.jpg';
                           case 'cocktails-juices':
-                            return '/category/organic_juice.png';
+                            return '/category/juices.jpg';
                           case 'hot-drinks':
-                            return '/category/hot_drinks.png';
+                            return '/category/hot_drinks.jpg';
                           case 'mexican-energy':
                           case 'energy-drinks':
-                            return '/category/redbull.png';
+                            return '/category/mexican_energy.jpg';
                           case 'soft-drinks':
-                            return '/category/cold_drinks.png';
+                            return '/category/soft_drinks.jpg';
                           case 'fast-food':
-                            return '/category/food.png';
+                            return '/category/fast_food.jpg';
+                          case 'billiards':
+                            return '/category/billiards.jpg';
                           default:
-                            return '/category/food.png';
+                            return '/category/fast_food.jpg';
                         }
                       };
 

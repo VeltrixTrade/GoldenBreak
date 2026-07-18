@@ -13,27 +13,30 @@ export default function MenuCard({ item, onAddToCart, inCart, lang }) {
   const getPlaceholderImage = () => {
     switch (item.category) {
       case 'fast-food':
-        return '/category/food.png';
+        return '/category/fast_food.jpg';
       case 'mojitos':
-        return '/category/mojito.png';
+        return '/category/mojitos.jpg';
       case 'milkshakes-smoothies':
-        return '/category/milkshake.png';
+        return '/category/milkshakes.jpg';
       case 'crepes':
+        return '/category/crepes.jpg';
       case 'sweets-snacks':
-        return '/category/desserts.png';
+        return '/category/sweets.jpg';
       case 'cocktails-juices':
-        return '/category/organic_juice.png';
+        return '/category/juices.jpg';
       case 'hot-drinks':
-        return '/category/hot_drinks.png';
+        return '/category/hot_drinks.jpg';
       case 'mexican-energy':
       case 'energy-drinks':
-        return '/category/redbull.png';
+        return '/category/mexican_energy.jpg';
       case 'soft-drinks':
-        return '/category/cold_drinks.png';
+        return '/category/soft_drinks.jpg';
       case 'shisha':
-        return '/category/hookah_1774332374.png';
+        return '/category/hookah.jpg';
+      case 'billiards':
+        return '/category/billiards.jpg';
       default:
-        return '/category/food.png';
+        return '/category/fast_food.jpg';
     }
   };
 

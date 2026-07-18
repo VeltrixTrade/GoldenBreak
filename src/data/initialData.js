@@ -1,17 +1,17 @@
 export const DEFAULT_CATEGORIES = [
   { id: 'all', nameAr: 'الكل', nameEn: 'All', icon: 'Utensils' },
-  { id: 'fast-food', nameAr: 'فاست فود', nameEn: 'Fast Food', icon: 'Drumstick' },
-  { id: 'milkshakes-smoothies', nameAr: 'ميلك شيك وسموزي', nameEn: 'Milkshakes & Smoothies', icon: 'GlassWater' },
-  { id: 'mojitos', nameAr: 'موهيتو', nameEn: 'Mojitos', icon: 'Sparkles' },
-  { id: 'crepes', nameAr: 'كريبات وبانكيك', nameEn: 'Crepes & Pancakes', icon: 'Dessert' },
-  { id: 'cocktails-juices', nameAr: 'عصائر وكوكتيلات', nameEn: 'Juices & Cocktails', icon: 'GlassWater' },
-  { id: 'hot-drinks', nameAr: 'مشروبات ساخنة', nameEn: 'Hot Drinks', icon: 'Coffee' },
-  { id: 'mexican-energy', nameAr: 'مكسيكيات طاقة', nameEn: 'Mexican Energy', icon: 'Zap' },
-  { id: 'energy-drinks', nameAr: 'مشروبات طاقة', nameEn: 'Energy Drinks', icon: 'Zap' },
-  { id: 'soft-drinks', nameAr: 'مشروبات غازية', nameEn: 'Soft Drinks', icon: 'GlassWater' },
-  { id: 'sweets-snacks', nameAr: 'حلويات وتسالي', nameEn: 'Sweets & Snacks', icon: 'Dessert' },
-  { id: 'shisha', nameAr: 'قسم النراكيل', nameEn: 'Hookah Lounge', icon: 'Flame' },
-  { id: 'billiards', nameAr: 'حجز طاولات', nameEn: 'Table Booking', icon: 'CircleDot' }
+  { id: 'fast-food', nameAr: 'فاست فود', nameEn: 'Fast Food', icon: 'Drumstick', image: '/category/fast_food.jpg' },
+  { id: 'milkshakes-smoothies', nameAr: 'ميلك شيك وسموزي', nameEn: 'Milkshakes & Smoothies', icon: 'GlassWater', image: '/category/milkshakes.jpg' },
+  { id: 'mojitos', nameAr: 'موهيتو', nameEn: 'Mojitos', icon: 'Sparkles', image: '/category/mojitos.jpg' },
+  { id: 'crepes', nameAr: 'كريبات وبانكيك', nameEn: 'Crepes & Pancakes', icon: 'Dessert', image: '/category/crepes.jpg' },
+  { id: 'cocktails-juices', nameAr: 'عصائر وكوكتيلات', nameEn: 'Juices & Cocktails', icon: 'GlassWater', image: '/category/juices.jpg' },
+  { id: 'hot-drinks', nameAr: 'مشروبات ساخنة', nameEn: 'Hot Drinks', icon: 'Coffee', image: '/category/hot_drinks.jpg' },
+  { id: 'mexican-energy', nameAr: 'مكسيكيات طاقة', nameEn: 'Mexican Energy', icon: 'Zap', image: '/category/mexican_energy.jpg' },
+  { id: 'energy-drinks', nameAr: 'مشروبات طاقة', nameEn: 'Energy Drinks', icon: 'Zap', image: '/category/mexican_energy.jpg' },
+  { id: 'soft-drinks', nameAr: 'مشروبات غازية', nameEn: 'Soft Drinks', icon: 'GlassWater', image: '/category/soft_drinks.jpg' },
+  { id: 'sweets-snacks', nameAr: 'حلويات وتسالي', nameEn: 'Sweets & Snacks', icon: 'Dessert', image: '/category/sweets.jpg' },
+  { id: 'shisha', nameAr: 'قسم النراكيل', nameEn: 'Hookah Lounge', icon: 'Flame', image: '/category/hookah.jpg' },
+  { id: 'billiards', nameAr: 'حجز طاولات', nameEn: 'Table Booking', icon: 'CircleDot', image: '/category/billiards.jpg' }
 ];
 
 export const DEFAULT_ITEMS = [
@@ -27,7 +27,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'وجبة كريسبي مقرمشة مع البطاطس المتبلة والصوص.',
     descriptionEn: 'Crispy chicken meal served with seasoned fries and sauce.',
-    popular: true
+    popular: true,
+    image: '/items/crispy_meal.jpg'
   },
   {
     id: 'ff-2',
@@ -40,7 +41,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'تشيكن بولو بصلصة الأعشاب الفاخرة والجبن.',
     descriptionEn: 'Stuffed chicken breast with herbs and cheese.',
-    popular: true
+    popular: true,
+    image: '/food_steak.png'
   },
   {
     id: 'ff-3',
@@ -66,7 +68,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'برجر لحم بقر طازج مع الجبن والصوص الخاص.',
     descriptionEn: 'Fresh beef patty with cheddar cheese and signature sauce.',
-    popular: true
+    popular: true,
+    image: '/items/beef_burger.jpg'
   },
   {
     id: 'ff-5',
@@ -291,7 +294,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'موهيتو جولدن الخاص بنكهة فائقة الانتعاش.',
     descriptionEn: 'House special Golden Break mint & lime sparkling mojito.',
-    popular: true
+    popular: true,
+    image: '/drink_mojito.png'
   },
   {
     id: 'mj-2',
@@ -583,7 +587,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'قهوة أمريكانو مثلجة ومصنوعة من الإسبريسو الفاخر.',
     descriptionEn: 'Espresso shots over cold water and ice cubes.',
-    popular: true
+    popular: true,
+    image: '/drink_latte.png'
   },
   {
     id: 'hd-2',
@@ -622,7 +627,8 @@ export const DEFAULT_ITEMS = [
     currency: 'د.ع',
     descriptionAr: 'كوب نسكافيه رغوة غنية.',
     descriptionEn: 'Warm frothy Nescafé coffee with hot milk.',
-    popular: false
+    popular: false,
+    image: '/drink_latte.png'
   },
   {
     id: 'hd-5',
