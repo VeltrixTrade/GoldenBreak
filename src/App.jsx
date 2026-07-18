@@ -421,7 +421,7 @@ export default function App() {
                             <img 
                               src={cat.image || getCategoryImg(cat.id)} 
                               alt={nameEn} 
-                              className="w-[90%] h-[90%] object-contain group-hover:scale-115 transition-transform duration-500"
+                              className="w-full h-full object-cover group-hover:scale-115 transition-transform duration-500"
                             />
                           </div>
                           <span className="font-sans text-lg sm:text-xl md:text-2xl font-bold text-white uppercase tracking-wider text-center mt-4 group-hover:text-[#e09824] transition-colors">
