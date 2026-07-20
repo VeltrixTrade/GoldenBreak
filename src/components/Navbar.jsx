@@ -23,16 +23,16 @@ export default function Navbar({ cartCount, onOpenCart, onOpenAdmin, activeTab, 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* Logo & Brand (Secret Triple-Click to open Admin) */}
-        <div className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="GOLDENBREAK @goldenbreak.dhk">
+        <div className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group" onClick={handleLogoClick} title="Golden Break @goldenbreak.dhk">
           <img 
             src="/logo.png" 
-            alt="GOLDENBREAK Logo" 
+            alt="Golden Break Logo" 
             className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover border border-[#e09824]/30 group-hover:scale-105 transition-transform duration-300 bg-black shadow-md shadow-[#e09824]/10"
           />
           <div>
             <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="font-extrabold text-sm sm:text-xl tracking-wider gold-text-gradient font-mono">
-                GOLDENBREAK
+                Golden Break
               </span>
             </div>
           </div>

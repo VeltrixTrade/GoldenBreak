@@ -18,7 +18,7 @@ export default function VenueShowcase({ lang }) {
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
             {isAr ? 'جولة في صالة ' : 'Tour in '}
-            <span className="gold-text-gradient font-mono">GOLDENBREAK</span>
+            <span className="gold-text-gradient font-mono">Golden Break</span>
           </h2>
           <p className="text-slate-400 text-sm leading-relaxed">
             {isAr 

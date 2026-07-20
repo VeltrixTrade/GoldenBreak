@@ -655,7 +655,7 @@ export default function App() {
 
           {/* Design Attribution */}
           <span className="block text-slate-600 text-[11px] pt-4 font-mono">
-            Designed by Antigravity / VeltrixTrade. © 2026 GOLDENBREAK. All rights reserved.
+            Designed by Antigravity / VeltrixTrade. © 2026 Golden Break. All rights reserved.
           </span>
 
         </div>

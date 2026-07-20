@@ -22,12 +22,12 @@ export default function Hero({ onOpenAdmin, currentLang, onLanguageChange }) {
         <div 
           className="cursor-pointer select-none mb-6 animate-fadeIn" 
           onClick={handleLogoClick}
-          title="GOLDENBREAK - Triple click for Admin"
+          title="Golden Break - Triple click for Admin"
         >
           <img 
             className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full object-cover border border-[#e09824]/20 drop-shadow-[0_10px_25px_rgba(224,152,36,0.2)] hover:scale-105 transition-transform duration-500 bg-black" 
             src="/logo.png" 
-            alt="GOLDENBREAK" 
+            alt="Golden Break" 
           />
         </div>
 

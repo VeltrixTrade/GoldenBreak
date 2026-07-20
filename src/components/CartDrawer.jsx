@@ -19,8 +19,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
     const fullMessage =
       (isAr 
-        ? `السلام عليكم، طلب جديد من صالة GOLDENBREAK (@goldenbreak.dhk):\n\n` 
-        : `Hello, new order from GOLDENBREAK (@goldenbreak.dhk):\n\n`) +
+        ? `السلام عليكم، طلب جديد من صالة Golden Break (@goldenbreak.dhk):\n\n` 
+        : `Hello, new order from Golden Break (@goldenbreak.dhk):\n\n`) +
       (isAr ? `📦 الوجبات والمشروبات:\n` : `📦 Items & Drinks:\n`) + `${itemsListText}\n\n` +
       (isAr ? `💰 المجموع الكلي: ` : `💰 Total Amount: `) + `${totalPrice.toLocaleString()} IQD\n` +
       (tableNumber ? (isAr ? `📍 رقم الطاولة / VIP: ${tableNumber}\n` : `📍 Table / VIP Number: ${tableNumber}\n`) : '') +
@@ -108,8 +108,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
                 <div className="p-4 bg-dark-700/60 rounded-xl text-xs text-amber-400 font-medium border border-amber-500/20">
                   {isAr 
-                    ? 'شكراً لزيارتك صالة GOLDENBREAK (@goldenbreak.dhk)! نتمنى لك وقتاً ممتعاً.'
-                    : 'Thank you for visiting GOLDENBREAK (@goldenbreak.dhk)! Enjoy your time.'
+                    ? 'شكراً لزيارتك صالة Golden Break (@goldenbreak.dhk)! نتمنى لك وقتاً ممتعاً.'
+                    : 'Thank you for visiting Golden Break (@goldenbreak.dhk)! Enjoy your time.'
                   }
                 </div>
 
