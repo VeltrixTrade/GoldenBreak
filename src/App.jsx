@@ -30,13 +30,13 @@ const CATEGORY_ICON_MAP = {
 export default function App() {
   // Load initial state from LocalStorage or fall back to defaults
   const [categories, setCategories] = useState(() => {
-    const saved = localStorage.getItem('gb_categories_v6');
+    const saved = localStorage.getItem('gb_categories_v7');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         const hasOldFormat = parsed.some(c => c.id === 'billiards' && (!c.image || !c.image.includes('billiards.jpg')));
         if (hasOldFormat) {
-          localStorage.removeItem('gb_categories_v6');
+          localStorage.removeItem('gb_categories_v7');
           return DEFAULT_CATEGORIES;
         }
         return parsed;
@@ -48,13 +48,13 @@ export default function App() {
   });
 
   const [items, setItems] = useState(() => {
-    const saved = localStorage.getItem('gb_items_v6');
+    const saved = localStorage.getItem('gb_items_v7');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         const hasOldFormat = parsed.some(i => i.id === 'ff-3' && (!i.image || !i.image.startsWith('https')));
         if (hasOldFormat) {
-          localStorage.removeItem('gb_items_v6');
+          localStorage.removeItem('gb_items_v7');
           return DEFAULT_ITEMS;
         }
         return parsed;
@@ -98,11 +98,11 @@ export default function App() {
 
   // Save to LocalStorage whenever categories or items change
   useEffect(() => {
-    localStorage.setItem('gb_categories_v6', JSON.stringify(categories));
+    localStorage.setItem('gb_categories_v7', JSON.stringify(categories));
   }, [categories]);
 
   useEffect(() => {
-    localStorage.setItem('gb_items_v6', JSON.stringify(items));
+    localStorage.setItem('gb_items_v7', JSON.stringify(items));
   }, [items]);
 
   // Cart Functions
@@ -177,6 +177,8 @@ export default function App() {
     localStorage.removeItem('gb_items_v5');
     localStorage.removeItem('gb_categories_v6');
     localStorage.removeItem('gb_items_v6');
+    localStorage.removeItem('gb_categories_v7');
+    localStorage.removeItem('gb_items_v7');
   };
 
   // Sort and filter categories for home page
