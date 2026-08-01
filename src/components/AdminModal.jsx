@@ -23,7 +23,7 @@ export default function AdminModal({
   // New Item Form State (Bilingual)
   const [nameAr, setNameAr] = useState('');
   const [nameEn, setNameEn] = useState('');
-  const [category, setCategory] = useState(categories[1]?.id || 'fast-food');
+  const [category, setCategory] = useState(categories[1]?.id || 'milkshakes-smoothies');
   const [price, setPrice] = useState('');
   const [currency, setCurrency] = useState('د.ع');
   const [descriptionAr, setDescriptionAr] = useState('');
@@ -523,7 +523,7 @@ export default function AdminModal({
                           case 'mexican-energy': case 'energy-drinks': return '/category/mexican_energy.jpg';
                           case 'soft-drinks': return '/category/soft_drinks.jpg';
                           case 'billiards': return '/category/billiards.jpg';
-                          default: return '/category/fast_food.jpg';
+                          default: return '/category/milkshakes.jpg';
                         }
                       };
 
@@ -583,7 +583,6 @@ export default function AdminModal({
                   {items.map((item) => {
                     const getPlaceholderImage = (itemCat) => {
                       switch (itemCat) {
-                        case 'fast-food': return '/category/fast_food.jpg';
                         case 'mojitos': return '/category/mojitos.jpg';
                         case 'milkshakes-smoothies': return '/category/milkshakes.jpg';
                         case 'crepes': return '/category/crepes.jpg';
@@ -594,7 +593,7 @@ export default function AdminModal({
                         case 'soft-drinks': return '/category/soft_drinks.jpg';
                         case 'shisha': return '/category/hookah.jpg';
                         case 'billiards': return '/category/billiards.jpg';
-                        default: return '/category/fast_food.jpg';
+                        default: return '/category/milkshakes.jpg';
                       }
                     };
 

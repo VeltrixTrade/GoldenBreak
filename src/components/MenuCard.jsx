@@ -12,8 +12,6 @@ export default function MenuCard({ item, onAddToCart, inCart, lang }) {
   // Helper to resolve category images similar to Qzone
   const getPlaceholderImage = () => {
     switch (item.category) {
-      case 'fast-food':
-        return '/category/fast_food.jpg';
       case 'mojitos':
         return '/category/mojitos.jpg';
       case 'milkshakes-smoothies':
@@ -36,7 +34,7 @@ export default function MenuCard({ item, onAddToCart, inCart, lang }) {
       case 'billiards':
         return '/category/billiards.jpg';
       default:
-        return '/category/fast_food.jpg';
+        return '/category/milkshakes.jpg';
     }
   };
 

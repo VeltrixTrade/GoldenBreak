@@ -399,12 +399,10 @@ export default function App() {
                             return '/category/mexican_energy.jpg';
                           case 'soft-drinks':
                             return '/category/soft_drinks.jpg';
-                          case 'fast-food':
-                            return '/category/fast_food.jpg';
                           case 'billiards':
                             return '/category/billiards.jpg';
                           default:
-                            return '/category/fast_food.jpg';
+                            return '/category/milkshakes.jpg';
                         }
                       };
 
